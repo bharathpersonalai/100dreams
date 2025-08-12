@@ -83,9 +83,7 @@
                 <a href="#donate" class="bg-golden-accent hover:bg-yellow-500 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
                     Donate Now
                 </a>
-                <a href="#programs" class="border-2 border-white hover:bg-white hover:text-teal-primary text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300">
-                    Learn More
-                </a>
+            
             </div>
         </div>
     </section>
@@ -466,7 +464,7 @@ document.getElementById('send-whatsapp-btn').addEventListener('click', function(
                 element.addEventListener('click', function(e) {
                     // Check if it's the main donate button to avoid triggering on links
                     if (this.tagName === 'BUTTON' || this.href.includes('#donate')) {
-                         e.preventDefault();
+                         e.preventDe fault();
                          alert('Redirecting to secure payment gateway...');
                     }
                 });
