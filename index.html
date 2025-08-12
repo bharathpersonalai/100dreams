@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100 Dreams - Let your Dream be 'Change-Making'</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'warm-bg': '#FDF6EC',
+                        'teal-primary': '#2C7A7B',
+                        'golden-accent': '#F6AD55'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        .hero-bg {
+            background: linear-gradient(rgba(44, 122, 123, 0.7), rgba(44, 122, 123, 0.7)), 
+                        url('/Gal5.jpg') center/cover no-repeat; /* Corrected Path */
+        }
+        .program-image {
+            transition: transform 0.3s ease;
+        }
+        .program-image:hover {
+            transform: scale(1.05);
+        }
+        .navbar-link.active {
+            color: #F6AD55;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-warm-bg">
+    <nav id="navbar" class="fixed top-0 w-full bg-white shadow-lg z-50 transition-all duration-300 h-20 flex items-center">
+    <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between">
+            
+            <a href="#home">
+                <img src="/Final Logo.png" alt="100 Dreams Logo" class="h-16 w-auto object-contain">
+            </a>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="navbar-link text-gray-700 hover:text-golden-accent transition-colors">Home</a>
+                <a href="#programs" class="navbar-link text-gray-700 hover:text-golden-accent transition-colors">Programs</a>
+                <a href="#contact" class="navbar-link text-gray-700 hover:text-golden-accent transition-colors">Contact</a>
+                <a href="#donate" class="navbar-link text-gray-700 hover:text-golden-accent transition-colors">Donate</a>
+                <a href="#founder" class="navbar-link text-gray-700 hover:text-golden-accent transition-colors">About Founder</a>
+            </div>
+            
+            <button id="mobile-menu-btn" class="md:hidden text-teal-primary">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+        
+        <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+            <div class="flex flex-col space-y-3">
+                <a href="#home" class="navbar-link text-gray-700 hover:text-golden-accent transition-colors">Home</a>
+                <a href="#programs" class="navbar-link text-gray-700 hover:text-golden-accent transition-colors">Programs</a>
+                <a href="#contact" class="navbar-link text-gray-700 hover:text-golden-accent transition-colors">Contact</a>
+                <a href="#donate" class="navbar-link text-gray-700 hover:text-golden-accent transition-colors">Donate</a>
+                <a href="#founder" class="navbar-link text-gray-700 hover:text-golden-accent transition-colors">About Founder</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center text-white">
+        <div class="container mx-auto px-4 text-center">
+            <div class="mb-8">
+                <h1 class="text-5xl md:text-7xl font-bold mb-4">100 Dreams</h1>
+                <p class="text-xl md:text-2xl mb-8 font-light">Let your Dream be 'Change-Making'</p>
+            </div>
+            <div class="space-x-4">
+                <a href="#donate" class="bg-golden-accent hover:bg-yellow-500 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    Donate Now
+                </a>
+                <a href="#programs" class="border-2 border-white hover:bg-white hover:text-teal-primary text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300">
+                    Learn More
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="programs" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-teal-primary mb-4">Our Programs</h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto">Discover the impactful initiatives we're running to create positive change in our communities</p>
+            </div>
+            
+            <div class="space-y-16">
+                <div class="bg-warm-bg rounded-2xl p-8 shadow-lg">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 class="text-3xl font-bold text-teal-primary mb-4">Sindhura Sanjeevani</h3>
+                            <p class="text-gray-700 text-lg leading-relaxed mb-6">
+                                A comprehensive healthcare initiative focused on providing essential medical services and health awareness programs to underserved communities. We believe healthcare is a fundamental right, not a privilege.
+                            </p>
+                            <div class="flex space-x-2">
+                                <span class="bg-teal-primary text-white px-3 py-1 rounded-full text-sm">Healthcare</span>
+                                <span class="bg-golden-accent text-white px-3 py-1 rounded-full text-sm">Community</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <img src="/Sindhura sanjeevani.jpg" alt="Sindhura Sanjeevani Program" class="program-image w-full h-48 object-cover rounded-lg shadow-md"> <div class="bg-teal-primary/10 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-heartbeat text-4xl text-teal-primary"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg border">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div class="order-2 md:order-1">
+                            <div class="grid grid-cols-2 gap-4">
+                                <img src="/Dinabandu.jpg" alt="Dinabandu Program" class="program-image w-full h-48 object-cover rounded-lg shadow-md"> <div class="bg-golden-accent/10 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-hands-helping text-4xl text-golden-accent"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-1 md:order-2">
+                            <h3 class="text-3xl font-bold text-teal-primary mb-4">Dinabandu</h3>
+                            <p class="text-gray-700 text-lg leading-relaxed mb-6">
+                                Supporting the daily wage workers and their families through skill development, financial literacy, and emergency assistance programs. Empowering communities to build sustainable livelihoods.
+                            </p>
+                            <div class="flex space-x-2">
+                                <span class="bg-teal-primary text-white px-3 py-1 rounded-full text-sm">Empowerment</span>
+                                <span class="bg-golden-accent text-white px-3 py-1 rounded-full text-sm">Skills</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-warm-bg rounded-2xl p-8 shadow-lg">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 class="text-3xl font-bold text-teal-primary mb-4">Organ Donation</h3>
+                            <p class="text-gray-700 text-lg leading-relaxed mb-6">
+                                Raising awareness about organ donation and facilitating the process to save lives. Every donation is a gift of life, and we're committed to spreading this message of hope and humanity.
+                            </p>
+                            <div class="flex space-x-2">
+                                <span class="bg-teal-primary text-white px-3 py-1 rounded-full text-sm">Life Saving</span>
+                                <span class="bg-golden-accent text-white px-3 py-1 rounded-full text-sm">Awareness</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <img src="/Organ donation.jpg" alt="Organ Donation Program" class="program-image w-full h-48 object-cover rounded-lg shadow-md"> <div class="bg-red-100 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-heart text-4xl text-red-500"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg border">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div class="order-2 md:order-1">
+                            <div class="grid grid-cols-2 gap-4">
+                                <img src="/Annasuktham.jpg" alt="Annasuktham Program" class="program-image w-full h-48 object-cover rounded-lg shadow-md"> <div class="bg-green-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-utensils text-4xl text-green-600"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-1 md:order-2">
+                            <h3 class="text-3xl font-bold text-teal-primary mb-4">Annasuktham</h3>
+                            <p class="text-gray-700 text-lg leading-relaxed mb-6">
+                                Fighting hunger by providing nutritious meals to those in need. Our food distribution program ensures no one goes to bed hungry in our community, spreading joy through the simple act of sharing.
+                            </p>
+                            <div class="flex space-x-2">
+                                <span class="bg-teal-primary text-white px-3 py-1 rounded-full text-sm">Nutrition</span>
+                                <span class="bg-golden-accent text-white px-3 py-1 rounded-full text-sm">Community</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-teal-primary mb-4">Get In Touch</h2>
+            <p class="text-gray-600 text-lg">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+        
+            <div class="bg-white rounded-2xl p-8 shadow-lg">
+                <h3 class="text-2xl font-bold text-teal-primary mb-6">Send a Message on WhatsApp</h3>
+                <form class="space-y-6" onsubmit="return false;">
+                    <div>
+                        <label for="whatsapp-message" class="block text-gray-700 font-semibold mb-2">Message</label>
+                        <textarea id="whatsapp-message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-primary focus:border-transparent transition-all" placeholder="Write your message here..."></textarea>
+                    </div>
+                    <button type="button" id="send-whatsapp-btn" class="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                        <span>Send via WhatsApp</span>
+                    </button>
+                </form>
+            </div>
+            
+            <div>
+                <div class="bg-white rounded-2xl p-8 shadow-lg mb-8">
+                    <h3 class="text-2xl font-bold text-teal-primary mb-6">Contact Information</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-teal-primary text-white p-3 rounded-full">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-800">Email</p>
+                                <a href="mailto:100dreamsfoundation@gmail.com" class="text-gray-600 hover:text-teal-primary transition-colors">
+                                    100dreamsfoundation@gmail.com
+                                </a>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-golden-accent text-white p-3 rounded-full">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-800">Phone</p>
+                                <a href="tel:+918884188880" class="text-gray-600 hover:text-teal-primary transition-colors">
+                                    +91 88841 88880
+                                </a>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-teal-primary text-white p-3 rounded-full">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-800">Address</p>
+                                <a href="https://www.google.com/maps/search/?api=1&query=123%20Change%20Street,%20Hope%20City" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-teal-primary transition-colors">
+                                    Bangarupalyam, Chittoor District, Andhra Pradesh, 517416
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rounded-2xl overflow-hidden h-96 shadow-lg">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13065.723290968628!2d78.90646056919618!3d13.196236761003668!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bad6412f3bb1395%3A0x3194852131bdcc8a!2sBangarupalyam%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1754987835817!5m2!1sen!2sin"
+                        class="w-full h-full"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+    <section id="donate" class="py-20 bg-teal-primary text-white">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold mb-6">Make a Difference Today</h2>
+                    <p class="text-xl leading-relaxed mb-8">
+                        Your contribution, no matter how small, can transform lives and communities. Join us in our mission to create lasting change and help us turn dreams into reality.
+                    </p>
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-check-circle text-golden-accent"></i>
+                            <span>100% of donations go directly to programs</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-check-circle text-golden-accent"></i>
+                            <span>Tax-deductible contributions</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-check-circle text-golden-accent"></i>
+                            <span>Transparent impact reporting</span>
+                        </div>
+                    </div>
+                    <a href="upi://pay?pa=100dreamsfoundation@okicici&pn=100%20Dreams%20Foundation&tn=Donation%20to%20100%20Dreams&cu=INR" class="inline-block bg-golden-accent hover:bg-yellow-500 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+    Donate Now
+</a>
+                </div>
+                <div class="relative">
+                    <img src="/donate.jpg" alt="Donate to 100 Dreams" class="rounded-2xl shadow-2xl">
+                    <div class="absolute inset-0 bg-gradient-to-t from-teal-primary/50 to-transparent rounded-2xl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="founder" class="py-20 bg-warm-bg">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-teal-primary mb-4">About Our Founder</h2>
+                    <p class="text-gray-600 text-lg">Meet the visionary behind 100 Dreams</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="grid md:grid-cols-3 gap-8 items-center">
+                        <div class="text-center">
+                            <div class="w-48 h-56 mx-auto mb-6 rounded-lg overflow-hidden shadow-lg">
+     <img src="/Founder.jpg" alt="Founder of 100 Dreams" class="w-full h-full object-cover">
+ </div>
+                            <h3 class="text-2xl font-bold text-teal-primary mb-2">Krishnaa Manineni</h3>
+                            <p class="text-golden-accent font-semibold">Visionary & Change Maker</p>
+                        </div>
+                        <div class="md:col-span-2">
+                            <p class="text-gray-700 text-lg leading-relaxed mb-6">
+                                With over 15 years of experience in social work and community development, our founder has dedicated their life to creating meaningful change. Their journey began with a simple belief: that every dream has the power to transform not just individual lives, but entire communities.
+                            </p>
+                            <p class="text-gray-700 text-lg leading-relaxed mb-6">
+                                Through 100 Dreams, they have successfully implemented numerous programs that have touched thousands of lives. Their approach combines grassroots activism with strategic planning, ensuring that every initiative creates lasting impact.
+                            </p>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="bg-teal-primary text-white px-4 py-2 rounded-full text-sm">Social Innovation</span>
+                                <span class="bg-golden-accent text-white px-4 py-2 rounded-full text-sm">Community Leadership</span>
+                                <span class="bg-gray-600 text-white px-4 py-2 rounded-full text-sm">15+ Years Experience</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="/Logo.png" alt="100 Dreams Logo" class="h-12 w-12 object-contain"> <div>
+                            <h3 class="text-2xl font-bold">100 Dreams</h3>
+                            <p class="text-gray-400">Let your Dream be 'Change-Making'</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        Empowering communities through innovative programs that address healthcare, education, nutrition, and social welfare. Together, we're building a better tomorrow.
+                    </p>
+                    <div class="flex space-x-4">
+    <a href="https://www.facebook.com/share/1J3VytinJX/" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-110">
+    <img src="/facebook_logo.png" alt="Facebook" class="h-12 w-12">   
+</a>
+    <a href="https://www.instagram.com/100dreamsfoundation?igsh=MXJoY2Q2aXZtNWdraw==" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-110">
+        <img src="/instagram_logo.png" alt="Instagram" class="h-12 w-12">
+    </a>
+</div> 
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-300 hover:text-golden-accent transition-colors">Home</a></li>
+                        <li><a href="#programs" class="text-gray-300 hover:text-golden-accent transition-colors">Programs</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-golden-accent transition-colors">Contact</a></li>
+                        <li><a href="#donate" class="text-gray-300 hover:text-golden-accent transition-colors">Donate</a></li>
+                        <li><a href="#founder" class="text-gray-300 hover:text-golden-accent transition-colors">About Founder</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Our Programs</h4>
+                    <ul class="space-y-2">
+                        <li><span class="text-gray-300">Sindhura Sanjeevani</span></li>
+                        <li><span class="text-gray-300">Dinabandu</span></li>
+                        <li><span class="text-gray-300">Organ Donation</span></li>
+                        <li><span class="text-gray-300">Annasuktham</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400">
+                    © 2024 100 Dreams. All rights reserved. | Designed with ❤️ for change-making
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Navbar scroll effect and active link highlighting
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.navbar-link');
+            
+            // Navbar background on scroll - Let's make it always white for simplicity
+            // if (window.scrollY > 50) {
+            //     navbar.classList.add('bg-white', 'shadow-lg');
+            // } else {
+            //     navbar.classList.remove('shadow-lg');
+            // }
+            
+            // Active section highlighting
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // WhatsApp button logic
+document.getElementById('send-whatsapp-btn').addEventListener('click', function() {
+    const phoneNumber = '918884188880'; // Your WhatsApp number without '+' or spaces
+    const messageInput = document.getElementById('whatsapp-message');
+    const messageText = messageInput.value;
+
+    if (messageText.trim() === '') {
+        alert('Please write a message before sending.');
+        return;
+    }
+
+    const encodedMessage = encodeURIComponent(messageText);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    
+    // Open WhatsApp in a new tab
+    window.open(whatsappUrl, '_blank');
+});
+
+        // Donate button clicks
+        document.querySelectorAll('a, button').forEach(element => {
+            if (element.textContent.includes('Donate')) {
+                element.addEventListener('click', function(e) {
+                    // Check if it's the main donate button to avoid triggering on links
+                    if (this.tagName === 'BUTTON' || this.href.includes('#donate')) {
+                         e.preventDefault();
+                         alert('Redirecting to secure payment gateway...');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
