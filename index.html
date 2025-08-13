@@ -26,6 +26,16 @@
         body, html {
     overflow-x: hidden;
 }
+.scroll-card {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.scroll-card.is-visible {
+    opacity: 1;
+    transform: scale(1);
+} 
         .hero-bg {
             background: linear-gradient(rgba(44, 122, 123, 0.7), rgba(44, 122, 123, 0.7)), 
                         url('/Gal5.jpg') center/cover no-repeat; /* Corrected Path */
@@ -104,28 +114,28 @@
                 <p class="text-xl text-gray-600">FOOD FOR HUNGRY SOULS</p>
             </div>
 
-            <div class="flex space-x-6 overflow-x-auto pb-4 sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-6 sm:space-x-0 sm:overflow-visible sm:pb-0">
-                <div class="flex-shrink-0 w-3/4 sm:w-full bg-white p-6 rounded-lg shadow-md text-center transform transition-transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
-                    <p class="font-bold text-teal-primary">Bangarupalyam, A.P</p>
-                    <p class="text-4xl font-bold text-gray-800 my-2">54,825</p>
-                    <p class="text-sm text-gray-500">25 MEALS PER DAY</p>
-                </div>
-                <div class="flex-shrink-0 w-3/4 sm:w-full bg-white p-6 rounded-lg shadow-md text-center transform transition-transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
-                    <p class="font-bold text-teal-primary">Hubli, Karnataka</p>
-                    <p class="text-4xl font-bold text-gray-800 my-2">7,740</p>
-                    <p class="text-sm text-gray-500">30 MEALS PER DAY</p>
-                </div>
-                <div class="flex-shrink-0 w-3/4 sm:w-full bg-white p-6 rounded-lg shadow-md text-center transform transition-transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="300">
-                    <p class="font-bold text-teal-primary">Chirala, A.P</p>
-                    <p class="text-4xl font-bold text-gray-800 my-2">5,700</p>
-                    <p class="text-sm text-gray-500">25 MEALS PER DAY</p>
-                </div>
-                <div class="flex-shrink-0 w-3/4 sm:w-full bg-white p-6 rounded-lg shadow-md text-center transform transition-transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="400">
-                    <p class="font-bold text-teal-primary">Balanagar, Telangana</p>
-                    <p class="text-4xl font-bold text-gray-800 my-2">1,725</p>
-                    <p class="text-sm text-gray-500">25 MEALS PER DAY</p>
-                </div>
-            </div>
+            <div id="stats-container" class="flex space-x-6 overflow-x-auto pb-4 sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-6 sm:space-x-0 sm:overflow-visible sm:pb-0">
+    <div class="scroll-card flex-shrink-0 w-3/4 sm:w-full bg-white p-6 rounded-lg shadow-md text-center transform transition-transform duration-300 hover:shadow-xl hover:-translate-y-2">
+        <p class="font-bold text-teal-primary">Bangarupalyam, A.P</p>
+        <p class="text-4xl font-bold text-gray-800 my-2">54,825</p>
+        <p class="text-sm text-gray-500">25 MEALS PER DAY</p>
+    </div>
+    <div class="scroll-card flex-shrink-0 w-3/4 sm:w-full bg-white p-6 rounded-lg shadow-md text-center transform transition-transform duration-300 hover:shadow-xl hover:-translate-y-2">
+        <p class="font-bold text-teal-primary">Hubli, Karnataka</p>
+        <p class="text-4xl font-bold text-gray-800 my-2">7,740</p>
+        <p class="text-sm text-gray-500">30 MEALS PER DAY</p>
+    </div>
+    <div class="scroll-card flex-shrink-0 w-3/4 sm:w-full bg-white p-6 rounded-lg shadow-md text-center transform transition-transform duration-300 hover:shadow-xl hover:-translate-y-2">
+        <p class="font-bold text-teal-primary">Chirala, A.P</p>
+        <p class="text-4xl font-bold text-gray-800 my-2">5,700</p>
+        <p class="text-sm text-gray-500">25 MEALS PER DAY</p>
+    </div>
+    <div class="scroll-card flex-shrink-0 w-3/4 sm:w-full bg-white p-6 rounded-lg shadow-md text-center transform transition-transform duration-300 hover:shadow-xl hover:-translate-y-2">
+        <p class="font-bold text-teal-primary">Balanagar, Telangana</p>
+        <p class="text-4xl font-bold text-gray-800 my-2">1,725</p>
+        <p class="text-sm text-gray-500">25 MEALS PER DAY</p>
+    </div>
+</div> 
 
             <div class="text-center mt-10" data-aos="fade-up" data-aos-delay="500">
                 <p class="text-2xl text-gray-700">Total meals distributed</p>
@@ -443,6 +453,30 @@
         // Open WhatsApp in a new tab
         window.open(whatsappUrl, '_blank');
     });
+    // --- Horizontal Scroll Animation Logic ---
+const scrollContainer = document.getElementById('stats-container');
+const scrollCards = document.querySelectorAll('.scroll-card');
+
+if (window.innerWidth < 640) { // Only run this on mobile screens
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            }
+        });
+    }, {
+        root: scrollContainer,
+        threshold: 0.5 // Trigger when 50% of the card is visible
+    });
+
+    scrollCards.forEach(card => {
+        observer.observe(card);
+    });
+} else { // On desktop, make all cards visible immediately
+    scrollCards.forEach(card => {
+        card.classList.add('is-visible');
+    });
+}
 </script>
 </body>
 </html>
