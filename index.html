@@ -89,12 +89,42 @@
             transform: rotateY(180deg);
         }
 
-        /* Mobile Carousel Styles */
+        /* Mobile Stats Carousel Styles */
         .stats-swiper .swiper-slide {
             width: 70%;
             height: 200px;
             perspective: 1000px;
         }
+        .swiper-flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .swiper-flip-card.is-flipped .swiper-flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .swiper-flip-card-front,
+        .swiper-flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .swiper-flip-card-front { background: white; color: #2C7A7B; }
+        .swiper-flip-card-back { background: #2C7A7B; color: white; transform: rotateY(180deg); }
+        .swiper-flip-card .title { font-size: 1.25em; font-weight: 900; margin: 0; }
+        .stats-swiper-nav { color: #2C7A7B; }
     </style>
 </head>
 
@@ -173,7 +203,147 @@
             </div>
         </div>
     </section>
-    
+
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-teal-primary mb-4">Get In Touch</h2>
+                <p class="text-gray-600 text-lg">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-start">
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <h3 class="text-2xl font-bold text-teal-primary mb-6">Send a Message on WhatsApp</h3>
+                    <form class="space-y-6" onsubmit="return false;">
+                        <div>
+                            <label for="whatsapp-message" class="block text-gray-700 font-semibold mb-2">Message</label>
+                            <textarea id="whatsapp-message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-primary focus:border-transparent transition-all" placeholder="Write your message here..."></textarea>
+                        </div>
+                        <button type="button" id="send-whatsapp-btn" class="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                            <span>Send via WhatsApp</span>
+                        </button>
+                    </form>
+                </div>
+                <div>
+                    <div class="bg-white rounded-2xl p-8 shadow-lg mb-8">
+                        <h3 class="text-2xl font-bold text-teal-primary mb-6">Contact Information</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-4">
+                                <div class="bg-teal-primary text-white p-3 rounded-full"><i class="fas fa-envelope"></i></div>
+                                <div>
+                                    <p class="font-semibold text-gray-800">Email</p>
+                                    <a href="mailto:100dreamsfoundation@gmail.com" class="text-gray-600 hover:text-teal-primary transition-colors">100dreamsfoundation@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="bg-golden-accent text-white p-3 rounded-full"><i class="fas fa-phone"></i></div>
+                                <div>
+                                    <p class="font-semibold text-gray-800">Phone</p>
+                                    <a href="tel:+918884188880" class="text-gray-600 hover:text-teal-primary transition-colors">+91 88841 88880</a>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="bg-teal-primary text-white p-3 rounded-full"><i class="fas fa-map-marker-alt"></i></div>
+                                <div>
+                                    <p class="font-semibold text-gray-800">Address</p>
+                                    <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13065.723290968628!2d78.90646056919618!3d13.196236761003668!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bad6412f3bb1395%3A0x3194852131bdcc8a!2sBangarupalyam%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1754987835817!5m2!1sen!2sin" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-teal-primary transition-colors">Bangarupalyam, Chittoor District, Andhra Pradesh, 517416</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rounded-2xl overflow-hidden h-96 shadow-lg">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13065.723290968628!2d78.90646056919618!3d13.196236761003668!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bad6412f3bb1395%3A0x3194852131bdcc8a!2sBangarupalyam%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1754987835817!5m2!1sen!2sin" class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="donate" class="py-20 bg-teal-primary text-white">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold mb-6">Make a Difference Today</h2>
+                    <p class="text-xl leading-relaxed mb-8">Your contribution, no matter how small, can transform lives and communities. Join us in our mission to create lasting change.</p>
+                    <button class="open-donate-modal bg-golden-accent hover:bg-yellow-500 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">Donate Now</button>
+                </div>
+                <div class="relative">
+                    <img src="/Donate.png" alt="Donate to 100 Dreams" class="rounded-2xl shadow-2xl">
+                    <div class="absolute inset-0 bg-gradient-to-t from-teal-primary/50 to-transparent rounded-2xl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="founder" class="py-20 bg-warm-bg">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-teal-primary mb-4">About Our Founder</h2>
+                    <p class="text-gray-600 text-lg">Meet the visionary behind 100 Dreams</p>
+                </div>
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="grid md:grid-cols-3 gap-8 items-center">
+                        <div class="text-center">
+                            <div class="w-48 h-48 mx-auto mb-6 rounded-lg overflow-hidden shadow-lg">
+                                <img src="/Founder.jpg" alt="Founder of 100 Dreams" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="text-2xl font-bold text-teal-primary mb-2">Founder Name</h3>
+                            <p class="text-golden-accent font-semibold">Visionary & Change Maker</p>
+                        </div>
+                        <div class="md:col-span-2">
+                            <p class="text-gray-700 text-lg leading-relaxed mb-6">With over 15 years of experience in social work and community development, our founder has dedicated their life to creating meaningful change. Their journey began with a simple belief: that every dream has the power to transform not just individual lives, but entire communities.</p>
+                            <p class="text-gray-700 text-lg leading-relaxed">Through 100 Dreams, they have successfully implemented numerous programs that have touched thousands of lives. Their approach combines grassroots activism with strategic planning, ensuring that every initiative creates lasting impact.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="/Final Logo.png" alt="100 Dreams Logo" class="h-12 w-12 object-contain">
+                        <div>
+                            <h3 class="text-2xl font-bold">100 Dreams</h3>
+                            <p class="text-gray-400">Let your Dream be 'Change-Making'</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed mb-6">Empowering communities through innovative programs that address healthcare, education, nutrition, and social welfare. Together, we're building a better tomorrow.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/share/1J3VytinJX/" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-110"><img src="/facebook_logo.png" alt="Facebook" class="h-8 w-8"></a>
+                        <a href="https://www.instagram.com/100dreamsfoundation?igsh=MXJoY2Q2aXZtNWdraw==" target="_blank" rel="noopener noreferrer" class="transition-transform hover:scale-110"><img src="/instagram_logo.png" alt="Instagram" class="h-8 w-8"></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-300 hover:text-golden-accent transition-colors">Home</a></li>
+                        <li><a href="#programs" class="text-gray-300 hover:text-golden-accent transition-colors">Programs</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-golden-accent transition-colors">Contact</a></li>
+                        <li><a href="#donate" class="text-gray-300 hover:text-golden-accent transition-colors">Donate</a></li>
+                        <li><a href="#founder" class="text-gray-300 hover:text-golden-accent transition-colors">About Founder</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Our Programs</h4>
+                    <ul class="space-y-2">
+                        <li><span class="text-gray-300">Sindhura Sanjeevani</span></li>
+                        <li><span class="text-gray-300">Dinabandu</span></li>
+                        <li><span class="text-gray-300">Organ Donation</span></li>
+                        <li><span class="text-gray-300">Annasuktham</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400">© 2024 100 Dreams. All rights reserved. | Designed with ❤️ for change-making</p>
+            </div>
+        </div>
+    </footer>
+
     <div id="donate-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
         <div class="bg-white rounded-lg shadow-xl p-6 md:p-8 w-full max-w-sm text-center relative">
             <button id="close-modal-btn" class="absolute top-2 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
@@ -197,9 +367,7 @@
         // --- Mobile Menu Toggle ---
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        mobileMenuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
 
         // --- Smooth Scroll & Active Link ---
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -267,8 +435,9 @@
                         const swiperWrapper = swiperContainer.querySelector('.swiper-wrapper');
                         statsData.forEach(stat => {
                             const slide = document.createElement('div');
-                            slide.className = 'swiper-slide';
-                            slide.innerHTML = `<div class="bg-white p-4 rounded-lg shadow-md text-center h-full flex flex-col justify-center"><p class="font-semibold text-teal-primary">${stat.location}</p><p class="text-3xl font-bold text-gray-800 my-1">${stat.total}</p><p class="text-xs text-gray-500">${stat.perDay}</p></div>`;
+                            slide.className = 'swiper-slide swiper-flip-card';
+                            slide.innerHTML = `<div class="swiper-flip-card-inner"><div class="swiper-flip-card-front"><p class="title">${stat.location}</p><p>${stat.perDay}</p></div><div class="swiper-flip-card-back"><p class="title">Total Meals</p><p style="font-size: 2.5em; font-weight: bold;">${stat.total}</p></div></div>`;
+                            slide.addEventListener('click', () => { slide.classList.toggle('is-flipped'); });
                             swiperWrapper.appendChild(slide);
                         });
                         statsSwiper = new Swiper('.stats-swiper', {
@@ -282,6 +451,20 @@
                     }
                 }
             });
+        });
+
+        // --- WhatsApp Logic ---
+        document.getElementById('send-whatsapp-btn').addEventListener('click', function() {
+            const phoneNumber = '918884188880';
+            const messageInput = document.getElementById('whatsapp-message');
+            const messageText = messageInput.value;
+            if (messageText.trim() === '') {
+                alert('Please write a message before sending.');
+                return;
+            }
+            const encodedMessage = encodeURIComponent(messageText);
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank');
         });
     </script>
 </body>
