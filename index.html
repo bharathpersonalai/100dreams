@@ -144,7 +144,7 @@
                      <button class="toggle-details-btn bg-teal-primary text-white font-semibold py-2 px-4 rounded-lg hover:bg-teal-600 transition-colors w-full">View Stats</button>
                 </div>
                 <div class="details-content bg-gray-50 p-6 border-t">
-                    <h4 class="text-xl font-bold text-center text-gray-800 mb-4">Meal Distribution Stats</h4>
+                    <h4 class="details-heading hidden text-xl font-bold text-center text-gray-800 mb-4">Meal Distribution Stats</h4>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-center">
                         <div class="bg-white p-4 rounded-lg shadow">
                             <p class="font-semibold text-teal-primary">Bangarupalyam, A.P</p>
@@ -524,13 +524,22 @@ const swiper = new Swiper('.swiper', {
         prevEl: '.swiper-button-prev',
     },
 }); 
-// --- Accordion Logic for Program Cards ---
+// --- Accordion and Swiper Logic for Program Cards ---
 const toggleButtons = document.querySelectorAll('.toggle-details-btn');
+let annasukthamSwiper = null; // This will hold our swiper instance
 
 toggleButtons.forEach(button => {
     button.addEventListener('click', () => {
-        const detailsContent = button.closest('.flex-col').querySelector('.details-content');
+        const card = button.closest('.flex-col');
+        const detailsContent = card.querySelector('.details-content');
+        const detailsHeading = card.querySelector('.details-heading'); // Find the heading
+        
         const isOpen = detailsContent.classList.toggle('open');
+
+        // Toggle the heading's visibility
+        if (detailsHeading) {
+            detailsHeading.classList.toggle('hidden', !isOpen);
+        }
         
         // Change button text
         if (isOpen) {
@@ -538,8 +547,37 @@ toggleButtons.forEach(button => {
         } else {
             button.textContent = button.textContent.replace('Hide', 'View');
         }
+
+        // Check if this is the Annasuktham card and initialize/update the swiper
+        const swiperContainer = card.querySelector('.annasuktham-swiper');
+        if (swiperContainer && isOpen) {
+            if (!annasukthamSwiper) { 
+                annasukthamSwiper = new Swiper('.annasuktham-swiper', {
+                    effect: 'coverflow',
+                    grabCursor: true,
+                    centeredSlides: true,
+                    slidesPerView: 'auto',
+                    loop: true,
+                    coverflowEffect: {
+                        rotate: 5,
+                        stretch: -10,
+                        depth: 100,
+                        modifier: 2,
+                        slideShadows: false,
+                    },
+                    navigation: {
+                        nextEl: '.annasuktham-nav.swiper-button-next',
+                        prevEl: '.annasuktham-nav.swiper-button-prev',
+                    },
+                });
+            } else {
+                setTimeout(() => {
+                    annasukthamSwiper.update();
+                }, 10);
+            }
+        }
     });
-});
+}); 
 </script>
 </body>
 </html>
