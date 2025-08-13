@@ -23,9 +23,18 @@
     </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        .annasuktham-swiper .swiper-slide {
+       .annasuktham-swiper .swiper-slide {
     width: 65%; /* Each slide will take up 65% of the screen width */
-} 
+    height: auto; /* Allow height to adjust to content */
+    transition: transform 0.4s, opacity 0.4s;
+}
+.annasuktham-swiper .swiper-slide-prev,
+.annasuktham-swiper .swiper-slide-next {
+    opacity: 0.4;
+}
+.annasuktham-nav {
+    transform: translateY(-150%); /* Lifts arrows up to be more centered */
+}
         html {
             scroll-behavior: smooth;
         }
