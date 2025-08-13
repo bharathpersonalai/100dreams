@@ -577,22 +577,16 @@ toggleButtons.forEach(button => {
             const swiperContainer = detailsContent.querySelector('.stats-swiper');
             if (swiperContainer && !isHidden && !statsSwiper) {
                 const swiperWrapper = swiperContainer.querySelector('.swiper-wrapper');
-                // Create the slides from the data
+                
+                // Create SIMPLE slides for mobile to prevent rendering bugs
                 statsData.forEach(stat => {
                     const slide = document.createElement('div');
                     slide.className = 'swiper-slide';
                     slide.innerHTML = `
-                        <div class="flip-card mx-auto">
-                            <div class="flip-card-inner">
-                                <div class="flip-card-front">
-                                    <p class="title">${stat.location}</p>
-                                    <p>${stat.perDay}</p>
-                                </div>
-                                <div class="flip-card-back">
-                                    <p class="title">Total Meals</p>
-                                    <p style="font-size: 2.5em; font-weight: bold;">${stat.total}</p>
-                                </div>
-                            </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md text-center h-full flex flex-col justify-center">
+                            <p class="font-semibold text-teal-primary">${stat.location}</p>
+                            <p class="text-3xl font-bold text-gray-800 my-1">${stat.total}</p>
+                            <p class="text-xs text-gray-500">${stat.perDay}</p>
                         </div>
                     `;
                     swiperWrapper.appendChild(slide);
