@@ -23,15 +23,31 @@
     </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
+    /* Global Styles */
     html {
         scroll-behavior: smooth;
     }
-
     body, html {
         overflow-x: hidden;
     }
 
-    /* KEEP THIS for the smooth expand/collapse animation */
+    /* Page Component Styles */
+    .hero-bg {
+        background: linear-gradient(rgba(44, 122, 123, 0.7), rgba(44, 122, 123, 0.7)), 
+                    url('/Gal5.jpg') center/cover no-repeat;
+    }
+    .program-image {
+        transition: transform 0.3s ease;
+    }
+    .program-image:hover {
+        transform: scale(1.05);
+    }
+    .navbar-link.active {
+        color: #F6AD55;
+        font-weight: 600;
+    }
+
+    /* Accordion Animation for Program Cards */
     .details-content {
         max-height: 0;
         overflow: hidden;
@@ -41,7 +57,7 @@
         max-height: 1000px; /* A large value to ensure all content fits */
     }
 
-    /* USE THIS for the new 3D stats carousel */
+    /* 3D Stats Carousel (Swiper.js) Styles */
     .annasuktham-swiper .swiper-slide {
         width: 65%; /* On mobile, each slide takes ~2/3 of the container */
         height: auto;
@@ -59,9 +75,7 @@
     .annasuktham-nav {
         transform: translateY(-150%); /* Lifts arrows up to be more centered */
     }
-
-    /* ... rest of your styles like .hero-bg etc. ... */
-</style> 
+</style>
 </head>
 <body>
     <nav id="navbar" class="fixed top-0 w-full bg-white shadow-lg z-50 transition-all duration-300 h-20 flex items-center">
