@@ -25,51 +25,59 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <style>
-        /* Floating icons animation */
-.floating-icons {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
+       /* Floating NGO icons (clean line SVGs) */
+.hero-decoration {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
 }
 
-.floating-icons span {
-    position: absolute;
-    font-size: 2rem;
-    animation: floatUp 8s linear infinite;
-    opacity: 0.6;
+.ngo-icon {
+  position: absolute;
+  bottom: -15vh;             /* start below the fold */
+  width: 42px;
+  height: 42px;
+  stroke: rgba(255,255,255,0.7);
+  stroke-width: 1.6;
+  fill: transparent;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2));
+  animation: heroFloatUp 12s linear infinite;
+  opacity: 0.8;
 }
 
-.floating-icons span:nth-child(1) {
-    left: 20%;
-    animation-delay: 0s;
-}
-.floating-icons span:nth-child(2) {
-    left: 50%;
-    animation-delay: 2s;
-}
-.floating-icons span:nth-child(3) {
-    left: 75%;
-    animation-delay: 4s;
+@keyframes heroFloatUp {
+  0%   { transform: translateY(0) scale(1);   opacity: 0.15; }
+  25%  { opacity: 0.6; }
+  100% { transform: translateY(-95vh) scale(1.08); opacity: 0; }
 }
 
-@keyframes floatUp {
-    0% {
-        transform: translateY(100vh) scale(1);
-        opacity: 0.3;
-    }
-    50% {
-        opacity: 0.8;
-    }
-    100% {
-        transform: translateY(-10vh) scale(1.2);
-        opacity: 0;
-    }
+/* Gentle pulse halo behind the Donate button */
+.inline-flex { align-items: center; justify-content: center; }
+
+.btn-halo {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  width: 190px;
+  height: 190px;
+  border-radius: 9999px;
+  background: radial-gradient(closest-side, rgba(246,173,85,0.35), rgba(246,173,85,0) 70%);
+  animation: haloPulse 3.2s ease-out infinite;
+  z-index: -1; /* behind the button */
 }
 
-/* Subtle gradient overlay for hero section */
-.hero-bg {
-    background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,255,255,0.05)), url('your-hero-image.jpg') center/cover no-repeat;
+@keyframes haloPulse {
+  0%   { transform: translate(-50%, -50%) scale(0.9); opacity: 0.35; }
+  60%  { opacity: 0.18; }
+  100% { transform: translate(-50%, -50%) scale(1.15); opacity: 0; }
 }
+
+/* Small tweaks for mobile */
+@media (max-width: 640px) {
+  .ngo-icon { width: 34px; height: 34px; }
+  .btn-halo { width: 150px; height: 150px; }
+}
+
 
         /* Milestone Flip Card */
 .milestone-card {
@@ -308,21 +316,41 @@
     </nav>
 
     <section id="home" class="hero-bg min-h-screen flex items-center justify-center text-white pt-20 relative overflow-hidden">
-    <!-- Animated floating icons -->
-    <div class="floating-icons">
-        <span>❤️</span>
-        <span>🕊️</span>
-        <span>🌍</span>
-    </div>
+  <!-- Subtle floating NGO line-icons (hands, bowl, leaf) -->
+  <div class="hero-decoration hero-icons" aria-hidden="true">
+    <!-- Helping Hands -->
+    <svg class="ngo-icon" style="left:18%; animation-delay:0s" viewBox="0 0 24 24" fill="none">
+      <path d="M12 13c1.9 0 3.5-1.6 3.5-3.5S13.9 6 12 6 8.5 7.6 8.5 9.5 10.1 13 12 13Z" />
+      <path d="M5 21v-2.5A4.5 4.5 0 0 1 9.5 14h1" />
+      <path d="M19 21v-2.5A4.5 4.5 0 0 0 14.5 14h-1" />
+    </svg>
 
-    <div class="container mx-auto px-4 text-center relative z-10">
-        <div>
-            <button class="open-donate-modal bg-golden-accent hover:bg-yellow-500 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
-                Donate Now
-            </button>
-        </div>
+    <!-- Bowl/Meal -->
+    <svg class="ngo-icon" style="left:52%; animation-delay:2s" viewBox="0 0 24 24" fill="none">
+      <path d="M4 10a8 8 0 0 0 16 0H4Z" />
+      <path d="M6 15h12" />
+      <path d="M8 18h8" />
+    </svg>
+
+    <!-- Leaf/Growth -->
+    <svg class="ngo-icon" style="left:78%; animation-delay:4s" viewBox="0 0 24 24" fill="none">
+      <path d="M3 20s7-1 11-5 5-11 5-11-7 1-11 5-5 11-5 11Z" />
+      <path d="M9 15c1-3 3-5 6-6" />
+    </svg>
+  </div>
+
+  <div class="container mx-auto px-4 text-center relative z-10">
+    <div class="inline-flex relative">
+      <!-- Pulse halo behind the button -->
+      <span class="btn-halo" aria-hidden="true"></span>
+
+      <button class="open-donate-modal bg-golden-accent hover:bg-yellow-500 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+        Donate Now
+      </button>
     </div>
+  </div>
 </section>
+
 
 
     <section id="programs" class="py-20 bg-warm-bg">
