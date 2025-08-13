@@ -23,6 +23,15 @@
     </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
+        .details-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+}
+
+.details-content.open {
+    max-height: 1000px; /* A large value to ensure all content fits */
+}
        .annasuktham-swiper .swiper-slide {
     width: 65%; /* Each slide will take up 65% of the screen width */
     height: auto; /* Allow height to adjust to content */
@@ -101,6 +110,19 @@
         </div>
     </div>
 </nav>
+<section id="home" class="hero-bg min-h-screen flex items-center justify-center text-white pt-20">
+    <div class="container mx-auto px-4 text-center">
+        <div class="mb-8">
+            <h1 class="text-5xl md:text-7xl font-bold mb-4">100 Dreams</h1>
+            <p class="text-xl md:text-2xl mb-8 font-light">Let your Dream be 'Change-Making'</p>
+        </div>
+        <div>
+            <button class="open-donate-modal bg-golden-accent hover:bg-yellow-500 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+                Donate Now
+            </button>
+        </div>
+    </div>
+</section>
 
     <section id="programs" class="py-20 bg-warm-bg">
     <div class="container mx-auto px-4">
@@ -112,44 +134,40 @@
         <div class="grid md:grid-cols-2 gap-8">
 
             <div class="bg-white rounded-2xl shadow-lg flex flex-col">
-    <div class="p-8 flex-grow">
-        <img src="/Annasuktham.jpg" alt="Annasuktham" class="w-full h-56 object-cover rounded-lg mb-6">
-        <h3 class="text-3xl font-bold text-teal-primary">Annasuktham</h3>
-        <p class="text-gray-600 mt-2 mb-6">Food for hungry souls, providing nutritious meals to those in need across multiple locations.</p>
-    </div>
-    <div class="px-8 pb-8">
-         <button class="toggle-details-btn bg-teal-primary text-white font-semibold py-2 px-4 rounded-lg hover:bg-teal-600 transition-colors w-full">View Stats</button>
-    </div>
-    <div class="details-content hidden bg-gray-100 p-6 border-t">
-        <h4 class="text-xl font-bold text-center text-gray-800 mb-4">Meal Distribution Stats</h4>
-        
-        <div class="swiper annasuktham-swiper relative">
-            <div class="swiper-wrapper py-4 items-center"> <div class="swiper-slide bg-white p-4 rounded-lg shadow-md text-center">
-                    <p class="font-semibold text-teal-primary">Bangarupalyam, A.P</p>
-                    <p class="text-3xl font-bold text-gray-800 my-1">54,825</p>
-                    <p class="text-xs text-gray-500">25 MEALS PER DAY</p>
+                <div class="p-8 flex-grow">
+                    <img src="/Annasuktham.jpg" alt="Annasuktham" class="w-full h-56 object-cover rounded-lg mb-6">
+                    <h3 class="text-3xl font-bold text-teal-primary">Annasuktham</h3>
+                    <p class="text-gray-600 mt-2 mb-6">Food for hungry souls, providing nutritious meals to those in need across multiple locations.</p>
                 </div>
-                <div class="swiper-slide bg-white p-4 rounded-lg shadow-md text-center">
-                    <p class="font-semibold text-teal-primary">Hubli, Karnataka</p>
-                    <p class="text-3xl font-bold text-gray-800 my-1">7,740</p>
-                    <p class="text-xs text-gray-500">30 MEALS PER DAY</p>
+                <div class="px-8 pb-8">
+                     <button class="toggle-details-btn bg-teal-primary text-white font-semibold py-2 px-4 rounded-lg hover:bg-teal-600 transition-colors w-full">View Stats</button>
                 </div>
-                <div class="swiper-slide bg-white p-4 rounded-lg shadow-md text-center">
-                    <p class="font-semibold text-teal-primary">Chirala, A.P</p>
-                    <p class="text-3xl font-bold text-gray-800 my-1">5,700</p>
-                    <p class="text-xs text-gray-500">25 MEALS PER DAY</p>
-                </div>
-                <div class="swiper-slide bg-white p-4 rounded-lg shadow-md text-center">
-                    <p class="font-semibold text-teal-primary">Balanagar, Telangana</p>
-                    <p class="text-3xl font-bold text-gray-800 my-1">1,725</p>
-                    <p class="text-xs text-gray-500">25 MEALS PER DAY</p>
+                <div class="details-content bg-gray-50 p-6 border-t">
+                    <h4 class="text-xl font-bold text-center text-gray-800 mb-4">Meal Distribution Stats</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-center">
+                        <div class="bg-white p-4 rounded-lg shadow">
+                            <p class="font-semibold text-teal-primary">Bangarupalyam, A.P</p>
+                            <p class="text-2xl font-bold text-gray-800">54,825</p>
+                            <p class="text-xs text-gray-500">25 MEALS PER DAY</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow">
+                            <p class="font-semibold text-teal-primary">Hubli, Karnataka</p>
+                            <p class="text-2xl font-bold text-gray-800">7,740</p>
+                            <p class="text-xs text-gray-500">30 MEALS PER DAY</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow">
+                            <p class="font-semibold text-teal-primary">Chirala, A.P</p>
+                            <p class="text-2xl font-bold text-gray-800">5,700</p>
+                            <p class="text-xs text-gray-500">25 MEALS PER DAY</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow">
+                            <p class="font-semibold text-teal-primary">Balanagar, Telangana</p>
+                            <p class="text-2xl font-bold text-gray-800">1,725</p>
+                            <p class="text-xs text-gray-500">25 MEALS PER DAY</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="swiper-button-next annasuktham-nav text-teal-primary"></div>
-            <div class="swiper-button-prev annasuktham-nav text-teal-primary"></div>
-        </div>
-    </div>
-</div> 
 
             <div class="bg-white rounded-2xl shadow-lg flex flex-col">
                 <div class="p-8 flex-grow">
@@ -160,7 +178,7 @@
                 <div class="px-8 pb-8">
                      <button class="toggle-details-btn bg-teal-primary text-white font-semibold py-2 px-4 rounded-lg hover:bg-teal-600 transition-colors w-full">View Details</button>
                 </div>
-                <div class="details-content hidden bg-gray-50 p-6 border-t">
+                <div class="details-content bg-gray-50 p-6 border-t">
                     <p class="text-center text-gray-600">More details and impact numbers coming soon.</p>
                 </div>
             </div>
@@ -174,7 +192,7 @@
                  <div class="px-8 pb-8">
                      <button class="toggle-details-btn bg-teal-primary text-white font-semibold py-2 px-4 rounded-lg hover:bg-teal-600 transition-colors w-full">View Details</button>
                 </div>
-                <div class="details-content hidden bg-gray-50 p-6 border-t">
+                <div class="details-content bg-gray-50 p-6 border-t">
                      <p class="text-center text-gray-600">More details and impact numbers coming soon.</p>
                 </div>
             </div>
@@ -188,13 +206,13 @@
                  <div class="px-8 pb-8">
                      <button class="toggle-details-btn bg-teal-primary text-white font-semibold py-2 px-4 rounded-lg hover:bg-teal-600 transition-colors w-full">View Details</button>
                 </div>
-                <div class="details-content hidden bg-gray-50 p-6 border-t">
+                <div class="details-content bg-gray-50 p-6 border-t">
                      <p class="text-center text-gray-600">More details and impact numbers coming soon.</p>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</section> 
 
     <section id="contact" class="py-20 bg-gray-50">
     <div class="container mx-auto px-4">
@@ -505,56 +523,22 @@ const swiper = new Swiper('.swiper', {
         prevEl: '.swiper-button-prev',
     },
 }); 
-// --- Accordion and Swiper Logic for Program Cards ---
+// --- Accordion Logic for Program Cards ---
 const toggleButtons = document.querySelectorAll('.toggle-details-btn');
-let annasukthamSwiper = null; // This will hold our swiper instance
 
 toggleButtons.forEach(button => {
     button.addEventListener('click', () => {
-        const card = button.closest('.flex-col');
-        const detailsContent = card.querySelector('.details-content');
-        const isHidden = detailsContent.classList.toggle('hidden');
-
+        const detailsContent = button.closest('.flex-col').querySelector('.details-content');
+        const isOpen = detailsContent.classList.toggle('open');
+        
         // Change button text
-        if (isHidden) {
-            button.textContent = button.textContent.replace('Hide', 'View');
-        } else {
+        if (isOpen) {
             button.textContent = button.textContent.replace('View', 'Hide');
-        }
-
-        // Check if this is the Annasuktham card
-        const swiperContainer = card.querySelector('.annasuktham-swiper');
-        if (swiperContainer && !isHidden) {
-            // If the section is now visible...
-            if (!annasukthamSwiper) { 
-                // ...and the swiper hasn't been created yet, create it.
-                annasukthamSwiper = new Swiper('.annasuktham-swiper', {
-                    effect: 'coverflow',
-                    grabCursor: true,
-                    centeredSlides: true,
-                    slidesPerView: 'auto',
-                    loop: true,
-                    coverflowEffect: {
-                        rotate: 0,
-                        stretch: -20,
-                        depth: 100,
-                        modifier: 1.5,
-                        slideShadows: false,
-                    },
-                    navigation: {
-                        nextEl: '.annasuktham-nav.swiper-button-next',
-                        prevEl: '.annasuktham-nav.swiper-button-prev',
-                    },
-                });
-            } else {
-                // ...if the swiper already exists, just force it to update its size.
-                setTimeout(() => {
-                    annasukthamSwiper.update();
-                }, 10);
-            }
+        } else {
+            button.textContent = button.textContent.replace('Hide', 'View');
         }
     });
-}); 
+});
 </script>
 </body>
 </html>
