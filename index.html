@@ -23,109 +23,67 @@
     </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* -- Flip Card Styles -- */
-.flip-card {
-  background-color: transparent;
-  width: 190px;
-  height: 254px;
-  perspective: 1000px;
-  font-family: sans-serif;
-  flex-shrink: 0; /* <-- Add this line */ 
+        /* Accordion Animation for Program Cards */
+.details-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+}
+.details-content.open {
+    max-height: 1000px;
 }
 
-.flip-card .title { /* Scoped the .title to only affect flip-cards */
-  font-size: 1.5em;
-  font-weight: 900;
-  text-align: center;
-  margin: 0;
+/* FINAL Styles for Tap-to-Flip Stats Carousel */
+.stats-swiper {
+    padding-bottom: 20px !important; /* Add padding for a cleaner look */
 }
-
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
-
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
-
-.flip-card-front, .flip-card-back {
-  box-shadow: 0 8px 14px 0 rgba(0,0,0,0.2);
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  border-radius: 1rem;
-}
-
-.flip-card-front {
-  background: white;
-  color: #2C7A7B; /* Teal Primary */
-}
-
-.flip-card-back {
-  background: #2C7A7B; /* Teal Primary */
-  color: white;
-  transform: rotateY(180deg);
-} 
-    /* Global Styles */
-    html {
-        scroll-behavior: smooth;
-    }
-    body, html {
-        overflow-x: hidden;
-    }
-
-    /* Page Component Styles */
-    .hero-bg {
-        background: linear-gradient(rgba(44, 122, 123, 0.7), rgba(44, 122, 123, 0.7)), 
-                    url('/Gal5.jpg') center/cover no-repeat;
-    }
-    .program-image {
-        transition: transform 0.3s ease;
-    }
-    .program-image:hover {
-        transform: scale(1.05);
-    }
-    .navbar-link.active {
-        color: #F6AD55;
-        font-weight: 600;
-    }
-
-    /* Accordion Animation for Program Cards */
-    .details-content {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.5s ease-in-out;
-    }
-    .details-content.open {
-        max-height: 1000px; /* A large value to ensure all content fits */
-    }
-
-    /* Styles for the new Stats Carousel */
 .stats-swiper .swiper-slide {
-    width: 70%; /* Each slide takes up 70% of the screen on mobile */
-    transition: transform 0.3s, opacity 0.3s;
-    opacity: 0.5;
-    transform: scale(0.9);
+    width: 70%;
+    height: 200px; /* Set a fixed height for the flip container */
+    perspective: 1000px;
 }
-
-.stats-swiper .swiper-slide-active {
-    opacity: 1;
-    transform: scale(1);
+.swiper-flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
 }
-
+.swiper-flip-card.is-flipped .swiper-flip-card-inner {
+    transform: rotateY(180deg);
+}
+.swiper-flip-card-front,
+.swiper-flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+}
+.swiper-flip-card-front {
+    background: white;
+    color: #2C7A7B;
+}
+.swiper-flip-card-back {
+    background: #2C7A7B;
+    color: white;
+    transform: rotateY(180deg);
+}
+.swiper-flip-card .title {
+    font-size: 1.25em;
+    font-weight: 900;
+    margin: 0;
+}
 .stats-swiper-nav {
-    color: #2C7A7B; /* Teal Primary color */
-    transform: translateY(-50%);
+    color: #2C7A7B;
 }
 </style>
 </head>
@@ -548,7 +506,7 @@ const swiper = new Swiper('.swiper', {
         prevEl: '.swiper-button-prev',
     },
 }); 
-// --- Accordion Logic for Program Cards ---
+// --- Accordion and Swiper Logic for Program Cards ---
 const toggleButtons = document.querySelectorAll('.toggle-details-btn');
 let statsSwiper = null; // This will hold our swiper instance
 
@@ -573,22 +531,30 @@ toggleButtons.forEach(button => {
                 button.textContent = button.textContent.replace('View', 'Hide');
             }
 
-            // Initialize the swiper for the stats carousel if it's the first time
             const swiperContainer = detailsContent.querySelector('.stats-swiper');
             if (swiperContainer && !isHidden && !statsSwiper) {
                 const swiperWrapper = swiperContainer.querySelector('.swiper-wrapper');
                 
-                // Create SIMPLE slides for mobile to prevent rendering bugs
+                // Create the TAP-TO-FLIP slides
                 statsData.forEach(stat => {
                     const slide = document.createElement('div');
-                    slide.className = 'swiper-slide';
+                    slide.className = 'swiper-slide swiper-flip-card';
                     slide.innerHTML = `
-                        <div class="bg-white p-4 rounded-lg shadow-md text-center h-full flex flex-col justify-center">
-                            <p class="font-semibold text-teal-primary">${stat.location}</p>
-                            <p class="text-3xl font-bold text-gray-800 my-1">${stat.total}</p>
-                            <p class="text-xs text-gray-500">${stat.perDay}</p>
+                        <div class="swiper-flip-card-inner">
+                            <div class="swiper-flip-card-front">
+                                <p class="title">${stat.location}</p>
+                                <p>${stat.perDay}</p>
+                            </div>
+                            <div class="swiper-flip-card-back">
+                                <p class="title">Total Meals</p>
+                                <p style="font-size: 2.5em; font-weight: bold;">${stat.total}</p>
+                            </div>
                         </div>
                     `;
+                    // Add tap-to-flip functionality
+                    slide.addEventListener('click', () => {
+                        slide.classList.toggle('is-flipped');
+                    });
                     swiperWrapper.appendChild(slide);
                 });
 
