@@ -522,30 +522,39 @@ toggleButtons.forEach(button => {
             button.textContent = button.textContent.replace('View', 'Hide');
         }
 
-        // Check if this is the Annasuktham card and initialize the swiper if it's not already
+        // Check if this is the Annasuktham card
         const swiperContainer = card.querySelector('.annasuktham-swiper');
-        if (swiperContainer && !isHidden && !annasukthamSwiper) {
-            annasukthamSwiper = new Swiper('.annasuktham-swiper', {
-                effect: 'coverflow',
-                grabCursor: true,
-                centeredSlides: true,
-                slidesPerView: 'auto',
-                loop: true,
-                coverflowEffect: {
-                    rotate: 10,
-                    stretch: 0,
-                    depth: 80,
-                    modifier: 2,
-                    slideShadows: false,
-                },
-                navigation: {
-                    nextEl: '.annasuktham-nav.swiper-button-next',
-                    prevEl: '.annasuktham-nav.swiper-button-prev',
-                },
-            });
+        if (swiperContainer && !isHidden) {
+            // If the section is now visible...
+            if (!annasukthamSwiper) { 
+                // ...and the swiper hasn't been created yet, create it.
+                annasukthamSwiper = new Swiper('.annasuktham-swiper', {
+                    effect: 'coverflow',
+                    grabCursor: true,
+                    centeredSlides: true,
+                    slidesPerView: 'auto',
+                    loop: true,
+                    coverflowEffect: {
+                        rotate: 0,
+                        stretch: -20,
+                        depth: 100,
+                        modifier: 1.5,
+                        slideShadows: false,
+                    },
+                    navigation: {
+                        nextEl: '.annasuktham-nav.swiper-button-next',
+                        prevEl: '.annasuktham-nav.swiper-button-prev',
+                    },
+                });
+            } else {
+                // ...if the swiper already exists, just force it to update its size.
+                setTimeout(() => {
+                    annasukthamSwiper.update();
+                }, 10);
+            }
         }
     });
-});
+}); 
 </script>
 </body>
 </html>
