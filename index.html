@@ -494,14 +494,6 @@
         if (!isNaN(num)) total += num;
     });
 
-    // Create milestone card
-    let milestone = document.createElement("div");
-    milestone.className = "milestone-card";
-    milestone.innerHTML = `
-        <div>Total Meals Served</div>
-        <div style="font-size: 2rem; font-weight: 900;">${total.toLocaleString()}</div>
-        <div class="milestone-sub">A heartfelt milestone achieved together ❤️</div>
-    `;
 
     // Insert after the cards grid
     let cardsSection = document.querySelector(".md\\:grid");
