@@ -25,59 +25,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <style>
-       /* Floating NGO icons (clean line SVGs) */
-.hero-decoration {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.ngo-icon {
-  position: absolute;
-  bottom: -15vh;             /* start below the fold */
-  width: 42px;
-  height: 42px;
-  stroke: rgba(255,255,255,0.7);
-  stroke-width: 1.6;
-  fill: transparent;
-  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2));
-  animation: heroFloatUp 12s linear infinite;
-  opacity: 0.8;
-}
-
-@keyframes heroFloatUp {
-  0%   { transform: translateY(0) scale(1);   opacity: 0.15; }
-  25%  { opacity: 0.6; }
-  100% { transform: translateY(-95vh) scale(1.08); opacity: 0; }
-}
-
-/* Gentle pulse halo behind the Donate button */
-.inline-flex { align-items: center; justify-content: center; }
-
-.btn-halo {
-  position: absolute;
-  inset: 50% auto auto 50%;
-  transform: translate(-50%, -50%);
-  width: 190px;
-  height: 190px;
-  border-radius: 9999px;
-  background: radial-gradient(closest-side, rgba(246,173,85,0.35), rgba(246,173,85,0) 70%);
-  animation: haloPulse 3.2s ease-out infinite;
-  z-index: -1; /* behind the button */
-}
-
-@keyframes haloPulse {
-  0%   { transform: translate(-50%, -50%) scale(0.9); opacity: 0.35; }
-  60%  { opacity: 0.18; }
-  100% { transform: translate(-50%, -50%) scale(1.15); opacity: 0; }
-}
-
-/* Small tweaks for mobile */
-@media (max-width: 640px) {
-  .ngo-icon { width: 34px; height: 34px; }
-  .btn-halo { width: 150px; height: 150px; }
-}
-
+       
 
         /* Milestone Flip Card */
 .milestone-card {
@@ -315,41 +263,33 @@
         </div>
     </nav>
 
-    <section id="home" class="hero-bg min-h-screen flex items-center justify-center text-white pt-20 relative overflow-hidden">
-  <!-- Subtle floating NGO line-icons (hands, bowl, leaf) -->
-  <div class="hero-decoration hero-icons" aria-hidden="true">
-    <!-- Helping Hands -->
-    <svg class="ngo-icon" style="left:18%; animation-delay:0s" viewBox="0 0 24 24" fill="none">
-      <path d="M12 13c1.9 0 3.5-1.6 3.5-3.5S13.9 6 12 6 8.5 7.6 8.5 9.5 10.1 13 12 13Z" />
-      <path d="M5 21v-2.5A4.5 4.5 0 0 1 9.5 14h1" />
-      <path d="M19 21v-2.5A4.5 4.5 0 0 0 14.5 14h-1" />
-    </svg>
-
-    <!-- Bowl/Meal -->
-    <svg class="ngo-icon" style="left:52%; animation-delay:2s" viewBox="0 0 24 24" fill="none">
-      <path d="M4 10a8 8 0 0 0 16 0H4Z" />
-      <path d="M6 15h12" />
-      <path d="M8 18h8" />
-    </svg>
-
-    <!-- Leaf/Growth -->
-    <svg class="ngo-icon" style="left:78%; animation-delay:4s" viewBox="0 0 24 24" fill="none">
-      <path d="M3 20s7-1 11-5 5-11 5-11-7 1-11 5-5 11-5 11Z" />
-      <path d="M9 15c1-3 3-5 6-6" />
-    </svg>
-  </div>
-
-  <div class="container mx-auto px-4 text-center relative z-10">
-    <div class="inline-flex relative">
-      <!-- Pulse halo behind the button -->
-      <span class="btn-halo" aria-hidden="true"></span>
-
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center text-white pt-20">
+  <div class="container mx-auto px-4 text-center">
+    <div class="mb-8">
+      <h1 class="text-4xl md:text-6xl font-bold mb-6">Making a Difference Together</h1>
+      <div class="flex flex-col md:flex-row justify-center gap-8 text-lg font-medium mb-10">
+        <div>
+          <span class="counter text-3xl font-bold text-yellow-400" data-target="69990">0</span>+
+          <p>Meals Served</p>
+        </div>
+        <div>
+          <span class="counter text-3xl font-bold text-yellow-400" data-target="800">0</span>+
+          <p>Children Educated</p>
+        </div>
+        <div>
+          <span class="counter text-3xl font-bold text-yellow-400" data-target="15">0</span>+
+          <p>Villages Supported</p>
+        </div>
+      </div>
+    </div>
+    <div>
       <button class="open-donate-modal bg-golden-accent hover:bg-yellow-500 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
         Donate Now
       </button>
     </div>
   </div>
 </section>
+
 
 
 
@@ -684,6 +624,35 @@
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
             window.open(whatsappUrl, '_blank');
         });
+         function animateCounter(counter) {
+    const target = +counter.getAttribute('data-target');
+    let count = 0;
+    const speed = target / 200; // Adjust speed here
+
+    function updateCounter() {
+      count += speed;
+      if (count < target) {
+        counter.textContent = Math.floor(count);
+        requestAnimationFrame(updateCounter);
+      } else {
+        counter.textContent = target;
+      }
+    }
+    updateCounter();
+  }
+
+  // Trigger when visible
+  const counters = document.querySelectorAll('.counter');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach(counter => observer.observe(counter));
     </script>
 </body>
 </html>
