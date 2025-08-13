@@ -308,9 +308,15 @@
                         <button class="toggle-details-btn bg-teal-primary text-white font-semibold py-3 px-4 rounded-lg hover:bg-teal-600 transition-colors w-full" data-target="#annasuktham-stats-wrapper">View Stats</button>
                     </div>
                     <div id="annasuktham-stats-wrapper" 
-     class="hidden bg-cover bg-center bg-no-repeat py-8 rounded-lg" 
-     style="background-image: url('/stall.jpg');">
-    <h4 class="text-xl font-bold text-center text-gray-800 mb-6">
+     class="relative hidden py-8 rounded-lg overflow-hidden">
+
+    <!-- Background image -->
+    <div class="absolute inset-0 bg-cover bg-center" 
+         style="background-image: url('/stall.jpg'); opacity: 0.3;"></div>
+
+    <!-- Content -->
+    <div class="relative z-10">
+        <h4 class="text-xl font-bold text-center text-gray-800 mb-6">
         Meal Distribution Stats
     </h4>
 
