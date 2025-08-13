@@ -25,6 +25,28 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <style>
+        .milestone-card {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 20px;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.milestone-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.9);
+}
+.milestone-sub {
+    font-size: 1rem;
+    font-weight: normal;
+    margin-top: 5px;
+    color: rgba(255,255,255,0.9);
+} 
         .flip-card-front .title {
     font-size: clamp(1rem, 2.5vw, 1.5rem); /* responsive scaling */
     white-space: normal; /* allow wrapping if needed */
@@ -372,6 +394,28 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    let total = 0;
+
+    // Select all flip-card meal counts
+    document.querySelectorAll(".flip-card-back p:nth-child(2)").forEach(p => {
+        let num = parseInt(p.textContent.replace(/,/g, ""));
+        if (!isNaN(num)) total += num;
+    });
+
+    // Create milestone card
+    let milestone = document.createElement("div");
+    milestone.className = "milestone-card";
+    milestone.innerHTML = `
+        <div>Total Meals Served</div>
+        <div style="font-size: 2rem; font-weight: 900;">${total.toLocaleString()}</div>
+        <div class="milestone-sub">A heartfelt milestone achieved together ❤️</div>
+    `;
+
+    // Insert after the cards grid
+    let cardsSection = document.querySelector(".md\\:grid");
+    cardsSection.parentNode.insertBefore(milestone, cardsSection.nextSibling);
+});
         // --- Mobile Menu Toggle ---
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
