@@ -23,6 +23,58 @@
     </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
+        /* -- Flip Card Styles -- */
+.flip-card {
+  background-color: transparent;
+  width: 190px;
+  height: 254px;
+  perspective: 1000px;
+  font-family: sans-serif;
+}
+
+.flip-card .title { /* Scoped the .title to only affect flip-cards */
+  font-size: 1.5em;
+  font-weight: 900;
+  text-align: center;
+  margin: 0;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  box-shadow: 0 8px 14px 0 rgba(0,0,0,0.2);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 1rem;
+}
+
+.flip-card-front {
+  background: white;
+  color: #2C7A7B; /* Teal Primary */
+}
+
+.flip-card-back {
+  background: #2C7A7B; /* Teal Primary */
+  color: white;
+  transform: rotateY(180deg);
+} 
     /* Global Styles */
     html {
         scroll-behavior: smooth;
@@ -143,37 +195,65 @@
     <div class="px-8 pb-8">
          <button class="toggle-details-btn bg-teal-primary text-white font-semibold py-2 px-4 rounded-lg hover:bg-teal-600 transition-colors w-full">View Stats</button>
     </div>
-    <div class="details-content bg-gray-100 p-6 border-t">
-        <h4 class="details-heading hidden text-xl font-bold text-center text-gray-800 mb-4">Meal Distribution Stats</h4>
-        <div class="swiper annasuktham-swiper relative">
-            <div class="swiper-wrapper py-4 items-center">
-                <div class="swiper-slide bg-white p-4 rounded-lg shadow-md text-center">
-                    <p class="font-semibold text-teal-primary">Bangarupalyam, A.P</p>
-                    <p class="text-3xl font-bold text-gray-800 my-1">54,825</p>
-                    <p class="text-xs text-gray-500">25 MEALS PER DAY</p>
+    <div class="details-content bg-gray-50 p-6 border-t">
+    <h4 class="details-heading hidden text-xl font-bold text-center text-gray-800 mb-6">Meal Distribution Stats</h4>
+    
+    <div class="flex flex-wrap items-center justify-center gap-8">
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <p class="title">Bangarupalyam, A.P</p>
+                    <p>25 Meals Per Day</p>
                 </div>
-                <div class="swiper-slide bg-white p-4 rounded-lg shadow-md text-center">
-                    <p class="font-semibold text-teal-primary">Hubli, Karnataka</p>
-                    <p class="text-3xl font-bold text-gray-800 my-1">7,740</p>
-                    <p class="text-xs text-gray-500">30 MEALS PER DAY</p>
-                </div>
-                <div class="swiper-slide bg-white p-4 rounded-lg shadow-md text-center">
-                    <p class="font-semibold text-teal-primary">Chirala, A.P</p>
-                    <p class="text-3xl font-bold text-gray-800 my-1">5,700</p>
-                    <p class="text-xs text-gray-500">25 MEALS PER DAY</p>
-                </div>
-                <div class="swiper-slide bg-white p-4 rounded-lg shadow-md text-center">
-                    <p class="font-semibold text-teal-primary">Balanagar, Telangana</p>
-                    <p class="text-3xl font-bold text-gray-800 my-1">1,725</p>
-                    <p class="text-xs text-gray-500">25 MEALS PER DAY</p>
+                <div class="flip-card-back">
+                    <p class="title">Total Meals</p>
+                    <p style="font-size: 2.5em; font-weight: bold;">54,825</p>
                 </div>
             </div>
-            <div class="swiper-button-next annasuktham-nav text-teal-primary"></div>
-            <div class="swiper-button-prev annasuktham-nav text-teal-primary"></div>
         </div>
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <p class="title">Hubli, Karnataka</p>
+                    <p>30 Meals Per Day</p>
+                </div>
+                <div class="flip-card-back">
+                    <p class="title">Total Meals</p>
+                    <p style="font-size: 2.5em; font-weight: bold;">7,740</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <p class="title">Chirala, A.P</p>
+                    <p>25 Meals Per Day</p>
+                </div>
+                <div class="flip-card-back">
+                    <p class="title">Total Meals</p>
+                    <p style="font-size: 2.5em; font-weight: bold;">5,700</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <p class="title">Balanagar, Telangana</p>
+                    <p>25 Meals Per Day</p>
+                </div>
+                <div class="flip-card-back">
+                    <p class="title">Total Meals</p>
+                    <p style="font-size: 2.5em; font-weight: bold;">1,725</p>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
-
            <div class="bg-white rounded-2xl shadow-lg flex flex-col">
     <div class="p-8 flex-grow">
         <img src="/new-sindhura sanjeevani.jpg" alt="Sindhura Sanjeevani" class="w-full h-56 object-cover rounded-lg mb-6">
