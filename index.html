@@ -30,6 +30,7 @@
   height: 254px;
   perspective: 1000px;
   font-family: sans-serif;
+  flex-shrink: 0; /* <-- Add this line */ 
 }
 
 .flip-card .title { /* Scoped the .title to only affect flip-cards */
@@ -215,15 +216,47 @@
                             </div>
                         </div>
                         <div class="flip-card mx-auto">
-                             <div class="flip-card-inner">
-                                <div class="flip-card-front"><p class="title">Balanagar, Telangana</p><p>25 Meals Per Day</p></div>
-                                <div class="flip-card-back"><p class="title">Total Meals</p><p style="font-size: 2.5em; font-weight: bold;">1,725</p></div>
-                            </div>
-                        </div>
+                             <div class="flip-card-<div class="bg-white rounded-2xl shadow-lg p-8 mb-12">
+    <div class="grid md:grid-cols-2 gap-8 items-start">
+        <div class="flex flex-col h-full">
+            <img src="/new-annasuktham.jpg" alt="Annasuktham" class="w-full h-56 object-cover rounded-lg mb-6">
+            <h3 class="text-3xl font-bold text-teal-primary">Annasuktham</h3>
+            <p class="text-gray-600 mt-2 mb-6 flex-grow">Food for hungry souls, providing nutritious meals to those in need across multiple locations.</p>
+            <button class="toggle-details-btn bg-teal-primary text-white font-semibold py-3 px-4 rounded-lg hover:bg-teal-600 transition-colors w-full" data-target="#annasuktham-stats">View Stats</button>
+        </div>
+
+        <div id="annasuktham-stats" class="hidden">
+            <h4 class="text-xl font-bold text-center text-gray-800 mb-6">Meal Distribution Stats</h4>
+            
+            <div class="flex overflow-x-auto space-x-4 pb-4 md:grid md:grid-cols-2 md:gap-6 md:space-x-0 md:pb-0">
+                <div class="flip-card mx-auto">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front"><p class="title">Bangarupalyam, A.P</p><p>25 Meals Per Day</p></div>
+                        <div class="flip-card-back"><p class="title">Total Meals</p><p style="font-size: 2.5em; font-weight: bold;">54,825</p></div>
+                    </div>
+                </div>
+                <div class="flip-card mx-auto">
+                     <div class="flip-card-inner">
+                        <div class="flip-card-front"><p class="title">Hubli, Karnataka</p><p>30 Meals Per Day</p></div>
+                        <div class="flip-card-back"><p class="title">Total Meals</p><p style="font-size: 2.5em; font-weight: bold;">7,740</p></div>
+                    </div>
+                </div>
+                <div class="flip-card mx-auto">
+                     <div class="flip-card-inner">
+                        <div class="flip-card-front"><p class="title">Chirala, A.P</p><p>25 Meals Per Day</p></div>
+                        <div class="flip-card-back"><p class="title">Total Meals</p><p style="font-size: 2.5em; font-weight: bold;">5,700</p></div>
+                    </div>
+                </div>
+                <div class="flip-card mx-auto">
+                     <div class="flip-card-inner">
+                        <div class="flip-card-front"><p class="title">Balanagar, Telangana</p><p>25 Meals Per Day</p></div>
+                        <div class="flip-card-back"><p class="title">Total Meals</p><p style="font-size: 2.5em; font-weight: bold;">1,725</p></div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
         <div class="grid md:grid-cols-3 gap-8">
             <div class="bg-white rounded-2xl shadow-lg flex flex-col">
