@@ -76,53 +76,53 @@
         }
     </style>
 </head>
-<body class="bg-warm-bg">
+<body>
     <nav id="navbar" class="fixed top-0 w-full bg-white shadow-lg z-50 transition-all duration-300 h-20 flex items-center">
-    <div class="container mx-auto px-4">
-        <div class="flex items-center justify-between">
-            
-            <a href="#home">
-                <img src="/Final Logo.png" alt="100 Dreams Logo" class="h-16 w-auto object-contain">
-            </a>
-            
-            <div class="hidden md:flex space-x-8">
-                <a href="#home" class="navbar-link text-gray-700 hover:text-golden-accent transition-colors">Home</a>
-                <a href="#programs" class="navbar-link text-gray-700 hover:text-golden-accent transition-colors">Programs</a>
-                <a href="#contact" class="navbar-link text-gray-700 hover:text-golden-accent transition-colors">Contact</a>
-                <a href="#donate" class="navbar-link text-gray-700 hover:text-golden-accent transition-colors">Donate</a>
-                <a href="#founder" class="navbar-link text-gray-700 hover:text-golden-accent transition-colors">About Founder</a>
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between">
+                
+                <a href="#home">
+                    <img src="/Final Logo.png" alt="100 Dreams Logo" class="h-16 w-auto object-contain">
+                </a>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="navbar-link text-gray-700 hover:text-golden-accent transition-colors">Home</a>
+                    <a href="#programs" class="navbar-link text-gray-700 hover:text-golden-accent transition-colors">Programs</a>
+                    <a href="#contact" class="navbar-link text-gray-700 hover:text-golden-accent transition-colors">Contact</a>
+                    <a href="#donate" class="navbar-link text-gray-700 hover:text-golden-accent transition-colors">Donate</a>
+                    <a href="#founder" class="navbar-link text-gray-700 hover:text-golden-accent transition-colors">About Founder</a>
+                </div>
+                
+                <button id="mobile-menu-btn" class="md:hidden text-teal-primary">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
             </div>
             
-            <button id="mobile-menu-btn" class="md:hidden text-teal-primary">
-                <i class="fas fa-bars text-xl"></i>
-            </button>
+            <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-white shadow-lg p-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" class="navbar-link text-gray-700 hover:text-golden-accent transition-colors block text-center py-2 rounded-md">Home</a>
+                    <a href="#programs" class="navbar-link text-gray-700 hover:text-golden-accent transition-colors block text-center py-2 rounded-md">Programs</a>
+                    <a href="#contact" class="navbar-link text-gray-700 hover:text-golden-accent transition-colors block text-center py-2 rounded-md">Contact</a>
+                    <a href="#donate" class="navbar-link text-gray-700 hover:text-golden-accent transition-colors block text-center py-2 rounded-md">Donate</a>
+                    <a href="#founder" class="navbar-link text-gray-700 hover:text-golden-accent transition-colors block text-center py-2 rounded-md">About Founder</a>
+                </div>
+            </div>
         </div>
-        
-        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-white shadow-lg p-4">
-    <div class="flex flex-col space-y-4">
-        <a href="#home" class="navbar-link text-gray-700 hover:text-golden-accent transition-colors block text-center py-2 rounded-md">Home</a>
-        <a href="#programs" class="navbar-link text-gray-700 hover:text-golden-accent transition-colors block text-center py-2 rounded-md">Programs</a>
-        <a href="#contact" class="navbar-link text-gray-700 hover:text-golden-accent transition-colors block text-center py-2 rounded-md">Contact</a>
-        <a href="#donate" class="navbar-link text-gray-700 hover:text-golden-accent transition-colors block text-center py-2 rounded-md">Donate</a>
-        <a href="#founder" class="navbar-link text-gray-700 hover:text-golden-accent transition-colors block text-center py-2 rounded-md">About Founder</a>
-    </div>
-</div>
+    </nav>
+
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center text-white pt-20">
+        <div class="container mx-auto px-4 text-center">
+            <div class="mb-8">
+                <h1 class="text-5xl md:text-7xl font-bold mb-4">100 Dreams</h1>
+                <p class="text-xl md:text-2xl mb-8 font-light">Let your Dream be 'Change-Making'</p>
+            </div>
+            <div>
+                <button class="open-donate-modal bg-golden-accent hover:bg-yellow-500 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    Donate Now
+                </button>
+            </div>
         </div>
-    </div>
-</nav>
-<section id="home" class="hero-bg min-h-screen flex items-center justify-center text-white pt-20">
-    <div class="container mx-auto px-4 text-center">
-        <div class="mb-8">
-            <h1 class="text-5xl md:text-7xl font-bold mb-4">100 Dreams</h1>
-            <p class="text-xl md:text-2xl mb-8 font-light">Let your Dream be 'Change-Making'</p>
-        </div>
-        <div>
-            <button class="open-donate-modal bg-golden-accent hover:bg-yellow-500 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
-                Donate Now
-            </button>
-        </div>
-    </div>
-</section>
+    </section> 
 
     <section id="programs" class="py-20 bg-warm-bg">
     <div class="container mx-auto px-4">
