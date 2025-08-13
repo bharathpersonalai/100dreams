@@ -90,63 +90,95 @@
     </div>
 </nav>
 
-    <section id="home" class="hero-bg min-h-screen flex items-center justify-center text-white">
-        <div class="container mx-auto px-4 text-center">
-            <div class="mb-8">
-                <h1 class="text-5xl md:text-7xl font-bold mb-4">100 Dreams</h1>
-                <p class="text-xl md:text-2xl mb-8 font-light">Let your Dream be 'Change-Making'</p>
-            </div>
-            <div class="space-x-4">
-                <a href="#donate" class="bg-golden-accent hover:bg-yellow-500 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
-                    Donate Now
-                </a>
-            </div>
-        </div>
-    </section>
-
-   <section id="programs" class="py-20 bg-warm-bg">
+    <section id="programs" class="py-20 bg-warm-bg">
     <div class="container mx-auto px-4">
         <div class="text-center mb-16">
             <h2 class="text-4xl font-bold text-teal-primary mb-4">Our Programs</h2>
             <p class="text-gray-600 text-lg max-w-2xl mx-auto">Discover the impactful initiatives we're running to create positive change</p>
         </div>
-    </div>
 
-    <div class="swiper w-full">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide bg-white rounded-lg shadow-lg overflow-hidden" style="width: 300px;">
-                <img src="/Annasuktham.jpg" alt="Annasuktham" class="w-full h-48 object-cover">
-                <div class="p-6 text-center">
-                    <h3 class="text-2xl font-bold text-teal-primary">Annasuktham</h3>
-                    <p class="text-gray-600 mt-2">Food for hungry souls, providing nutritious meals to those in need.</p>
+        <div class="grid md:grid-cols-2 gap-8">
+
+            <div class="bg-white rounded-2xl shadow-lg flex flex-col">
+                <div class="p-8 flex-grow">
+                    <img src="/Annasuktham.jpg" alt="Annasuktham" class="w-full h-56 object-cover rounded-lg mb-6">
+                    <h3 class="text-3xl font-bold text-teal-primary">Annasuktham</h3>
+                    <p class="text-gray-600 mt-2 mb-6">Food for hungry souls, providing nutritious meals to those in need across multiple locations.</p>
+                </div>
+                <div class="px-8 pb-8">
+                     <button class="toggle-details-btn bg-teal-primary text-white font-semibold py-2 px-4 rounded-lg hover:bg-teal-600 transition-colors w-full">View Stats</button>
+                </div>
+                <div class="details-content hidden bg-gray-50 p-6 border-t">
+                    <h4 class="text-xl font-bold text-center text-gray-800 mb-4">Meal Distribution Stats</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-center">
+                        <div class="bg-white p-4 rounded-lg shadow">
+                            <p class="font-semibold text-teal-primary">Bangarupalyam, A.P</p>
+                            <p class="text-2xl font-bold text-gray-800">54,825</p>
+                            <p class="text-xs text-gray-500">25 MEALS PER DAY</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow">
+                            <p class="font-semibold text-teal-primary">Hubli, Karnataka</p>
+                            <p class="text-2xl font-bold text-gray-800">7,740</p>
+                            <p class="text-xs text-gray-500">30 MEALS PER DAY</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow">
+                            <p class="font-semibold text-teal-primary">Chirala, A.P</p>
+                            <p class="text-2xl font-bold text-gray-800">5,700</p>
+                            <p class="text-xs text-gray-500">25 MEALS PER DAY</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow">
+                            <p class="font-semibold text-teal-primary">Balanagar, Telangana</p>
+                            <p class="text-2xl font-bold text-gray-800">1,725</p>
+                            <p class="text-xs text-gray-500">25 MEALS PER DAY</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="swiper-slide bg-white rounded-lg shadow-lg overflow-hidden" style="width: 300px;">
-                <img src="/Sindhura sanjeevani.jpg" alt="Sindhura Sanjeevani" class="w-full h-48 object-cover">
-                <div class="p-6 text-center">
-                    <h3 class="text-2xl font-bold text-teal-primary">Sindhura Sanjeevani</h3>
-                    <p class="text-gray-600 mt-2">A comprehensive healthcare initiative for underserved communities.</p>
+
+            <div class="bg-white rounded-2xl shadow-lg flex flex-col">
+                <div class="p-8 flex-grow">
+                    <img src="/Sindhura sanjeevani.jpg" alt="Sindhura Sanjeevani" class="w-full h-56 object-cover rounded-lg mb-6">
+                    <h3 class="text-3xl font-bold text-teal-primary">Sindhura Sanjeevani</h3>
+                    <p class="text-gray-600 mt-2 mb-6">A comprehensive healthcare initiative for underserved communities, focusing on blood donation camps and health awareness.</p>
+                </div>
+                <div class="px-8 pb-8">
+                     <button class="toggle-details-btn bg-teal-primary text-white font-semibold py-2 px-4 rounded-lg hover:bg-teal-600 transition-colors w-full">View Details</button>
+                </div>
+                <div class="details-content hidden bg-gray-50 p-6 border-t">
+                    <p class="text-center text-gray-600">More details and impact numbers coming soon.</p>
                 </div>
             </div>
-            <div class="swiper-slide bg-white rounded-lg shadow-lg overflow-hidden" style="width: 300px;">
-                <img src="/Organ donation.jpg" alt="Organ Donation" class="w-full h-48 object-cover">
-                <div class="p-6 text-center">
-                    <h3 class="text-2xl font-bold text-teal-primary">Organ Donation</h3>
-                    <p class="text-gray-600 mt-2">Raising awareness and facilitating the process to save lives.</p>
+
+            <div class="bg-white rounded-2xl shadow-lg flex flex-col">
+                <div class="p-8 flex-grow">
+                    <img src="/Organ donation.jpg" alt="Organ Donation" class="w-full h-56 object-cover rounded-lg mb-6">
+                    <h3 class="text-3xl font-bold text-teal-primary">Organ Donation</h3>
+                    <p class="text-gray-600 mt-2 mb-6">Raising awareness and facilitating the life-saving process of organ donation.</p>
+                </div>
+                 <div class="px-8 pb-8">
+                     <button class="toggle-details-btn bg-teal-primary text-white font-semibold py-2 px-4 rounded-lg hover:bg-teal-600 transition-colors w-full">View Details</button>
+                </div>
+                <div class="details-content hidden bg-gray-50 p-6 border-t">
+                     <p class="text-center text-gray-600">More details and impact numbers coming soon.</p>
                 </div>
             </div>
-            <div class="swiper-slide bg-white rounded-lg shadow-lg overflow-hidden" style="width: 300px;">
-                <img src="/Dinabandu.jpg" alt="Dinabandu" class="w-full h-48 object-cover">
-                <div class="p-6 text-center">
-                    <h3 class="text-2xl font-bold text-teal-primary">Dinabandu</h3>
-                    <p class="text-gray-600 mt-2">Supporting families with skill development and financial literacy.</p>
+
+            <div class="bg-white rounded-2xl shadow-lg flex flex-col">
+                <div class="p-8 flex-grow">
+                    <img src="/Dinabandu.jpg" alt="Dinabandu" class="w-full h-56 object-cover rounded-lg mb-6">
+                    <h3 class="text-3xl font-bold text-teal-primary">Dinabandu</h3>
+                    <p class="text-gray-600 mt-2 mb-6">Supporting families with skill development, financial literacy, and emergency assistance programs.</p>
+                </div>
+                 <div class="px-8 pb-8">
+                     <button class="toggle-details-btn bg-teal-primary text-white font-semibold py-2 px-4 rounded-lg hover:bg-teal-600 transition-colors w-full">View Details</button>
+                </div>
+                <div class="details-content hidden bg-gray-50 p-6 border-t">
+                     <p class="text-center text-gray-600">More details and impact numbers coming soon.</p>
                 </div>
             </div>
         </div>
-        <div class="swiper-button-next text-golden-accent"></div>
-        <div class="swiper-button-prev text-golden-accent"></div>
     </div>
-</section> 
+</section>
 
     <section id="contact" class="py-20 bg-gray-50">
     <div class="container mx-auto px-4">
@@ -457,6 +489,22 @@ const swiper = new Swiper('.swiper', {
         prevEl: '.swiper-button-prev',
     },
 }); 
+// --- Accordion Logic for Program Cards ---
+const toggleButtons = document.querySelectorAll('.toggle-details-btn');
+
+toggleButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const detailsContent = button.closest('.flex-col').querySelector('.details-content');
+        const isHidden = detailsContent.classList.toggle('hidden');
+        
+        // Change button text
+        if (isHidden) {
+            button.textContent = button.textContent.replace('Hide', 'View');
+        } else {
+            button.textContent = button.textContent.replace('View', 'Hide');
+        }
+    });
+});
 </script>
 </body>
 </html>
