@@ -100,40 +100,45 @@
         <div class="grid md:grid-cols-2 gap-8">
 
             <div class="bg-white rounded-2xl shadow-lg flex flex-col">
-                <div class="p-8 flex-grow">
-                    <img src="/Annasuktham.jpg" alt="Annasuktham" class="w-full h-56 object-cover rounded-lg mb-6">
-                    <h3 class="text-3xl font-bold text-teal-primary">Annasuktham</h3>
-                    <p class="text-gray-600 mt-2 mb-6">Food for hungry souls, providing nutritious meals to those in need across multiple locations.</p>
+    <div class="p-8 flex-grow">
+        <img src="/Annasuktham.jpg" alt="Annasuktham" class="w-full h-56 object-cover rounded-lg mb-6">
+        <h3 class="text-3xl font-bold text-teal-primary">Annasuktham</h3>
+        <p class="text-gray-600 mt-2 mb-6">Food for hungry souls, providing nutritious meals to those in need across multiple locations.</p>
+    </div>
+    <div class="px-8 pb-8">
+         <button class="toggle-details-btn bg-teal-primary text-white font-semibold py-2 px-4 rounded-lg hover:bg-teal-600 transition-colors w-full">View Stats</button>
+    </div>
+    <div class="details-content hidden bg-gray-100 p-6 border-t">
+        <h4 class="text-xl font-bold text-center text-gray-800 mb-4">Meal Distribution Stats</h4>
+        
+        <div class="swiper annasuktham-swiper relative">
+            <div class="swiper-wrapper py-4">
+                <div class="swiper-slide bg-white p-4 rounded-lg shadow-md text-center" style="width: 200px;">
+                    <p class="font-semibold text-teal-primary">Bangarupalyam, A.P</p>
+                    <p class="text-3xl font-bold text-gray-800 my-1">54,825</p>
+                    <p class="text-xs text-gray-500">25 MEALS PER DAY</p>
                 </div>
-                <div class="px-8 pb-8">
-                     <button class="toggle-details-btn bg-teal-primary text-white font-semibold py-2 px-4 rounded-lg hover:bg-teal-600 transition-colors w-full">View Stats</button>
+                <div class="swiper-slide bg-white p-4 rounded-lg shadow-md text-center" style="width: 200px;">
+                    <p class="font-semibold text-teal-primary">Hubli, Karnataka</p>
+                    <p class="text-3xl font-bold text-gray-800 my-1">7,740</p>
+                    <p class="text-xs text-gray-500">30 MEALS PER DAY</p>
                 </div>
-                <div class="details-content hidden bg-gray-50 p-6 border-t">
-                    <h4 class="text-xl font-bold text-center text-gray-800 mb-4">Meal Distribution Stats</h4>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-center">
-                        <div class="bg-white p-4 rounded-lg shadow">
-                            <p class="font-semibold text-teal-primary">Bangarupalyam, A.P</p>
-                            <p class="text-2xl font-bold text-gray-800">54,825</p>
-                            <p class="text-xs text-gray-500">25 MEALS PER DAY</p>
-                        </div>
-                        <div class="bg-white p-4 rounded-lg shadow">
-                            <p class="font-semibold text-teal-primary">Hubli, Karnataka</p>
-                            <p class="text-2xl font-bold text-gray-800">7,740</p>
-                            <p class="text-xs text-gray-500">30 MEALS PER DAY</p>
-                        </div>
-                        <div class="bg-white p-4 rounded-lg shadow">
-                            <p class="font-semibold text-teal-primary">Chirala, A.P</p>
-                            <p class="text-2xl font-bold text-gray-800">5,700</p>
-                            <p class="text-xs text-gray-500">25 MEALS PER DAY</p>
-                        </div>
-                        <div class="bg-white p-4 rounded-lg shadow">
-                            <p class="font-semibold text-teal-primary">Balanagar, Telangana</p>
-                            <p class="text-2xl font-bold text-gray-800">1,725</p>
-                            <p class="text-xs text-gray-500">25 MEALS PER DAY</p>
-                        </div>
-                    </div>
+                <div class="swiper-slide bg-white p-4 rounded-lg shadow-md text-center" style="width: 200px;">
+                    <p class="font-semibold text-teal-primary">Chirala, A.P</p>
+                    <p class="text-3xl font-bold text-gray-800 my-1">5,700</p>
+                    <p class="text-xs text-gray-500">25 MEALS PER DAY</p>
+                </div>
+                <div class="swiper-slide bg-white p-4 rounded-lg shadow-md text-center" style="width: 200px;">
+                    <p class="font-semibold text-teal-primary">Balanagar, Telangana</p>
+                    <p class="text-3xl font-bold text-gray-800 my-1">1,725</p>
+                    <p class="text-xs text-gray-500">25 MEALS PER DAY</p>
                 </div>
             </div>
+            <div class="swiper-button-next annasuktham-nav text-teal-primary"></div>
+            <div class="swiper-button-prev annasuktham-nav text-teal-primary"></div>
+        </div>
+    </div>
+</div> 
 
             <div class="bg-white rounded-2xl shadow-lg flex flex-col">
                 <div class="p-8 flex-grow">
@@ -489,19 +494,44 @@ const swiper = new Swiper('.swiper', {
         prevEl: '.swiper-button-prev',
     },
 }); 
-// --- Accordion Logic for Program Cards ---
+// --- Accordion and Swiper Logic for Program Cards ---
 const toggleButtons = document.querySelectorAll('.toggle-details-btn');
+let annasukthamSwiper = null; // This will hold our swiper instance
 
 toggleButtons.forEach(button => {
     button.addEventListener('click', () => {
-        const detailsContent = button.closest('.flex-col').querySelector('.details-content');
+        const card = button.closest('.flex-col');
+        const detailsContent = card.querySelector('.details-content');
         const isHidden = detailsContent.classList.toggle('hidden');
-        
+
         // Change button text
         if (isHidden) {
             button.textContent = button.textContent.replace('Hide', 'View');
         } else {
             button.textContent = button.textContent.replace('View', 'Hide');
+        }
+
+        // Check if this is the Annasuktham card and initialize the swiper if it's not already
+        const swiperContainer = card.querySelector('.annasuktham-swiper');
+        if (swiperContainer && !isHidden && !annasukthamSwiper) {
+            annasukthamSwiper = new Swiper('.annasuktham-swiper', {
+                effect: 'coverflow',
+                grabCursor: true,
+                centeredSlides: true,
+                slidesPerView: 'auto',
+                loop: true,
+                coverflowEffect: {
+                    rotate: 10,
+                    stretch: 0,
+                    depth: 80,
+                    modifier: 2,
+                    slideShadows: false,
+                },
+                navigation: {
+                    nextEl: '.annasuktham-nav.swiper-button-next',
+                    prevEl: '.annasuktham-nav.swiper-button-prev',
+                },
+            });
         }
     });
 });
