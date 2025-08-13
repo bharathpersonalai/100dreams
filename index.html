@@ -25,6 +25,52 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <style>
+        /* Floating icons animation */
+.floating-icons {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.floating-icons span {
+    position: absolute;
+    font-size: 2rem;
+    animation: floatUp 8s linear infinite;
+    opacity: 0.6;
+}
+
+.floating-icons span:nth-child(1) {
+    left: 20%;
+    animation-delay: 0s;
+}
+.floating-icons span:nth-child(2) {
+    left: 50%;
+    animation-delay: 2s;
+}
+.floating-icons span:nth-child(3) {
+    left: 75%;
+    animation-delay: 4s;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* Subtle gradient overlay for hero section */
+.hero-bg {
+    background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,255,255,0.05)), url('your-hero-image.jpg') center/cover no-repeat;
+}
+
         /* Milestone Flip Card */
 .milestone-card {
   width: 100%;
@@ -261,17 +307,23 @@
         </div>
     </nav>
 
-    <section id="home" class="hero-bg min-h-screen flex items-center justify-center text-white pt-20">
-        <div class="container mx-auto px-4 text-center">
-            <div class="mb-8">
-                <h1 class="text-5xl md:text-7xl font-bold mb-4">100 Dreams</h1>
-                <p class="text-xl md:text-2xl mb-8 font-light">Let your Dream be 'Change-Making'</p>
-            </div>
-            <div>
-                <button class="open-donate-modal bg-golden-accent hover:bg-yellow-500 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">Donate Now</button>
-            </div>
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center text-white pt-20 relative overflow-hidden">
+    <!-- Animated floating icons -->
+    <div class="floating-icons">
+        <span>❤️</span>
+        <span>🕊️</span>
+        <span>🌍</span>
+    </div>
+
+    <div class="container mx-auto px-4 text-center relative z-10">
+        <div>
+            <button class="open-donate-modal bg-golden-accent hover:bg-yellow-500 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+                Donate Now
+            </button>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <section id="programs" class="py-20 bg-warm-bg">
         <div class="container mx-auto px-4">
@@ -306,12 +358,12 @@
     <div class="flip-card-inner">
       <div class="flip-card-front">
         <p class="title">❤️</p>
-        <p>Touch the Heart</p>
+        <p>Touch the Card</p>
       </div>
       <div class="flip-card-back">
         <p class="title">Total Meals Served</p>
         <p style="font-size: 2.5em; font-weight: bold;">69,990</p>
-        <p>❤️ A heartfelt milestone achieved together</p>
+        <p>❤️ A heartfelt milestone achieved together</p>    
       </div>
     </div>
   </div>
