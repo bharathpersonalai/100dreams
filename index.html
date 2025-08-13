@@ -25,6 +25,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <style>
+        .flip-card-front .title {
+    font-size: clamp(1rem, 2.5vw, 1.5rem); /* responsive scaling */
+    white-space: normal; /* allow wrapping if needed */
+    text-align: center; /* center text inside the card */
+    word-break: break-word; /* break long names if needed */
+    padding: 0 5px; /* small padding to avoid touching edges */
+}
+ 
         /* Global Styles */
         html { scroll-behavior: smooth; }
         body, html { overflow-x: hidden; }
