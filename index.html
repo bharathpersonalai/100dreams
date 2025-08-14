@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>100 Dreams - Let your Dream be 'Change-Making'</title>
@@ -25,8 +31,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <style>
-       
-
+        .mini-map {
+    height: 250px;
+    border-radius: 0.5rem;
+} 
+        
         /* Milestone Flip Card */
 .milestone-card {
   width: 100%;
@@ -150,54 +159,7 @@
             font-weight: 600;
         }
 
-        /* Desktop Flip Card Styles */
-        .flip-card {
-            background-color: transparent;
-            width: 190px;
-            height: 254px;
-            perspective: 1000px;
-            font-family: sans-serif;
-            flex-shrink: 0;
-        }
-        .flip-card .title {
-            font-size: 1.5em;
-            font-weight: 900;
-            text-align: center;
-            margin: 0;
-        }
-        .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.8s;
-            transform-style: preserve-3d;
-        }
-        .flip-card:hover .flip-card-inner {
-            transform: rotateY(180deg);
-        }
-        .flip-card-front, .flip-card-back {
-            box-shadow: 0 8px 14px 0 rgba(0,0,0,0.2);
-            position: absolute;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            border-radius: 1rem;
-        }
-        .flip-card-front {
-            background: white;
-            color: #2C7A7B;
-        }
-        .flip-card-back {
-            background: #2C7A7B;
-            color: white;
-            transform: rotateY(180deg);
-        }
-
+    
         /* Mobile Stats Carousel Styles */
         .stats-swiper .swiper-slide {
             width: 70%;
@@ -234,6 +196,33 @@
         .swiper-flip-card-back { background: #2C7A7B; color: white; transform: rotateY(180deg); }
         .swiper-flip-card .title { font-size: 1.25em; font-weight: 900; margin: 0; }
         .stats-swiper-nav { color: #2C7A7B; }
+
+        /* -- Animated Counter Bubble Styles -- */
+.counter-bubble {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1.5rem;
+    flex-shrink: 0; /* Important for mobile scrolling */
+}
+.counter-bubble .location {
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+.counter-bubble .count {
+    font-size: 3.75rem; /* 6xl */
+    font-weight: 800; /* extrabold */
+    line-height: 1;
+    margin: 0.5rem 0;
+}
+.counter-bubble .per-day {
+    font-size: 0.875rem;
+}
     </style>
 </head>
 
@@ -300,108 +289,57 @@
                 <p class="text-gray-600 text-lg max-w-2xl mx-auto">Discover the impactful initiatives we're running to create positive change</p>
             </div>
             <div class="bg-white rounded-2xl shadow-lg p-8 mb-12">
-                <div class="grid md:grid-cols-2 gap-8 items-start">
-                    <div class="flex flex-col h-full">
-                        <img src="/new-annasuktham.jpg" alt="Annasuktham" class="w-full h-56 object-cover rounded-lg mb-6">
-                        <h3 class="text-3xl font-bold text-teal-primary">Annasuktham</h3>
-                        <p class="text-gray-600 mt-2 mb-6 flex-grow">Food for hungry souls, providing nutritious meals to those in need across multiple locations.</p>
-                        <button class="toggle-details-btn bg-teal-primary text-white font-semibold py-3 px-4 rounded-lg hover:bg-teal-600 transition-colors w-full" data-target="#annasuktham-stats-wrapper">View Stats</button>
+    <div class="grid md:grid-cols-2 gap-8 items-start">
+        <div class="flex flex-col h-full">
+            <img src="/new-annasuktham.jpg" alt="Annasuktham" class="w-full h-56 object-cover rounded-lg mb-6">
+            <h3 class="text-3xl font-bold text-teal-primary">Annasuktham</h3>
+            <p class="text-gray-600 mt-2 mb-6 flex-grow">Food for hungry souls, providing nutritious meals to those in need across multiple locations.</p>
+        </div>
+
+        <div>
+            <h4 class="text-xl font-bold text-center text-gray-800 mb-6">Meal Distribution Stats</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                
+                <div class="stat-card cursor-pointer" data-location-index="0">
+                    <div class="stat-view bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition-shadow">
+                        <p class="font-semibold text-teal-primary text-lg">Bangarupalyam, A.P</p>
+                        <p class="text-5xl font-extrabold text-gray-800 my-2">54,825</p>
+                        <p class="text-base text-gray-500">25 MEALS PER DAY</p>
                     </div>
-                    <div id="annasuktham-stats-wrapper" 
-     class="relative hidden py-8 rounded-lg overflow-hidden">
-
-    <!-- Background image -->
-    <div class="absolute inset-0 bg-cover bg-center" 
-         style="background-image: url('/stall.jpg'); opacity: 0.3;"></div>
-
-    <!-- Content -->
-    <div class="relative z-10">
-        <h4 class="text-xl font-bold text-center text-gray-800 mb-6">
-        Meal Distribution Stats
-    </h4>
-
-
-    <div class="swiper stats-swiper md:hidden">
-        <div class="swiper-wrapper items-center"></div>
-        <div class="swiper-button-next stats-swiper-nav"></div>
-        <div class="swiper-button-prev stats-swiper-nav"></div>
-    </div>
-
-    <div class="hidden md:grid md:grid-cols-2 md:gap-6">
-        <div class="flip-card mx-auto">
-            <div class="flip-card-inner">
-                <div class="flip-card-front">
-                    <p class="title">Bangarupalyam, A.P</p>
-                    <p>25 Meals Per Day</p>
-                     
+                    <div id="map-bangarupalyam" class="map-view hidden mini-map"></div>
                 </div>
-                <div class="flip-card-back">
-                    <p class="title">Total Meals</p>
-                    <p style="font-size: 2.5em; font-weight: bold;">54,825</p>
-                </div>
-            </div>
-        </div>
 
-        <div class="flip-card mx-auto">
-            <div class="flip-card-inner">
-                <div class="flip-card-front">
-                    <p class="title">Hubli, Karnataka</p>
-                    <p>30 Meals Per Day</p>
-                     
+                <div class="stat-card cursor-pointer" data-location-index="1">
+                    <div class="stat-view bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition-shadow">
+                        <p class="font-semibold text-teal-primary text-lg">Hubli, Karnataka</p>
+                        <p class="text-5xl font-extrabold text-gray-800 my-2">7,740</p>
+                        <p class="text-base text-gray-500">30 MEALS PER DAY</p>
+                    </div>
+                    <div id="map-hubli" class="map-view hidden mini-map"></div>
                 </div>
-                <div class="flip-card-back">
-                    <p class="title">Total Meals</p>
-                    <p style="font-size: 2.5em; font-weight: bold;">7,740</p>
-                </div>
-            </div>
-        </div>
 
-        <div class="flip-card mx-auto">
-            <div class="flip-card-inner">
-                <div class="flip-card-front">
-                    <p class="title">Chirala, A.P</p>
-                    <p>25 Meals Per Day</p>
-                    
+                <div class="stat-card cursor-pointer" data-location-index="2">
+                    <div class="stat-view bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition-shadow">
+                        <p class="font-semibold text-teal-primary text-lg">Chirala, A.P</p>
+                        <p class="text-5xl font-extrabold text-gray-800 my-2">5,700</p>
+                        <p class="text-base text-gray-500">25 MEALS PER DAY</p>
+                    </div>
+                    <div id="map-chirala" class="map-view hidden mini-map"></div>
                 </div>
-                <div class="flip-card-back">
-                    <p class="title">Total Meals</p>
-                    <p style="font-size: 2.5em; font-weight: bold;">5,700</p>
-                </div>
-            </div>
-        </div>
 
-        <div class="flip-card mx-auto">
-            <div class="flip-card-inner">
-                <div class="flip-card-front">
-                    <p class="title">Balanagar, Telangana</p>
-                    <p>25 Meals Per Day</p>
-                     
-                </div>
-                <div class="flip-card-back">
-                    <p class="title">Total Meals</p>
-                    <p style="font-size: 2.5em; font-weight: bold;">1,725</p>
+                <div class="stat-card cursor-pointer" data-location-index="3">
+                    <div class="stat-view bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition-shadow">
+                        <p class="font-semibold text-teal-primary text-lg">Balanagar, Telangana</p>
+                        <p class="text-5xl font-extrabold text-gray-800 my-2">1,725</p>
+                        <p class="text-base text-gray-500">25 MEALS PER DAY</p>
+                    </div>
+                    <div id="map-balanagar" class="map-view hidden mini-map"></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-                        <!-- Milestone Card -->
-<div class="mt-8">
-  <div class="flip-card mx-auto">
-    <div class="flip-card-inner">
-      <div class="flip-card-front">
-        <p class="title">❤️</p>
-        <p>Touch the Card</p>
-      </div>
-      <div class="flip-card-back">
-        <p class="title">Total Meals Served</p>
-        <p style="font-size: 2.5em; font-weight: bold;">69,990</p>
-        <p>❤️ A heartfelt milestone achieved together</p>    
-      </div>
-    </div>
-  </div>
-</div>
+           
 
                     </div>
                 </div>
@@ -508,13 +446,57 @@
                             <div class="w-48 h-48 mx-auto mb-6 rounded-lg overflow-hidden shadow-lg">
                                 <img src="/Founder.jpg" alt="Founder of 100 Dreams" class="w-full h-full object-cover">
                             </div>
-                            <h3 class="text-2xl font-bold text-teal-primary mb-2">Founder Name</h3>
+                            <h3 class="text-2xl font-bold text-teal-primary mb-2">Krishna Maninei</h3>
                             <p class="text-golden-accent font-semibold">Visionary & Change Maker</p>
                         </div>
                         <div class="md:col-span-2">
-                            <p class="text-gray-700 text-lg leading-relaxed mb-6">With over 15 years of experience in social work and community development, our founder has dedicated their life to creating meaningful change. Their journey began with a simple belief: that every dream has the power to transform not just individual lives, but entire communities.</p>
-                            <p class="text-gray-700 text-lg leading-relaxed">Through 100 Dreams, they have successfully implemented numerous programs that have touched thousands of lives. Their approach combines grassroots activism with strategic planning, ensuring that every initiative creates lasting impact.</p>
-                        </div>
+    <p class="text-gray-700 text-lg leading-relaxed mb-6">
+        Krishna Manineni is not only a celebrated hero in the film industry but also a true hero in real life. With a deep sense of compassion and a strong belief in giving back to society, he founded 100 Dreams seven years ago with a mission to serve people from all walks of life.
+    </p>
+    <p class="text-gray-700 text-lg leading-relaxed mb-4">
+        Under his leadership, the organisation has introduced several impactful initiatives:
+    </p>
+    <ul class="space-y-4 mb-6">
+        <li class="flex items-start space-x-4">
+            <div class="flex-shrink-0 pt-1">
+                <i class="fas fa-utensils text-teal-primary text-xl"></i>
+            </div>
+            <div>
+                <strong class="font-semibold text-gray-800">Annashooktham</strong> – Providing hot, nutritious meals to those in need, with over 70,000 meals donated so far.
+            </div>
+        </li>
+        <li class="flex items-start space-x-4">
+            <div class="flex-shrink-0 pt-1">
+                <i class="fas fa-hand-holding-medical text-teal-primary text-xl"></i>
+            </div>
+            <div>
+                <strong class="font-semibold text-gray-800">Sindhura Sanjeevani</strong> – Organising blood donation camps where 250+ donors have contributed to saving countless lives.
+            </div>
+        </li>
+        <li class="flex items-start space-x-4">
+            <div class="flex-shrink-0 pt-1">
+                <i class="fas fa-hand-holding-heart text-teal-primary text-xl"></i>
+            </div>
+            <div>
+                <strong class="font-semibold text-gray-800">Punarapi</strong> – Spreading awareness and facilitating organ donation, inspiring many to pledge for a noble cause.
+            </div>
+        </li>
+        <li class="flex items-start space-x-4">
+            <div class="flex-shrink-0 pt-1">
+                <i class="fas fa-hands-helping text-teal-primary text-xl"></i>
+            </div>
+            <div>
+                <strong class="font-semibold text-gray-800">Deenabandhuvu</strong> – Extending support for the dignified final rites of the underprivileged.
+            </div>
+        </li>
+    </ul>
+    <p class="text-gray-700 text-lg leading-relaxed mb-6">
+        Beyond these initiatives, Krishna has personally contributed towards medical aid, supported individuals in financial distress, and even donated to places of worship, including temples and churches, strengthening community bonds.
+    </p>
+    <p class="text-gray-700 text-lg leading-relaxed">
+        Balancing his career in cinema with his passion for service, Krishna Manineni continues to prove that true success is measured not just by fame, but by the lives one touches. His vision is to inspire more people to join hands in building a compassionate and selfless society.
+    </p>
+</div>
                     </div>
                 </div>
             </div>
@@ -584,151 +566,106 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-    let total = 0;
-
-    // Select all flip-card meal counts
-    document.querySelectorAll(".flip-card-back p:nth-child(2)").forEach(p => {
-        let num = parseInt(p.textContent.replace(/,/g, ""));
-        if (!isNaN(num)) total += num;
+    // --- Mobile Menu Toggle ---
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
     });
 
-
-    // Insert after the cards grid
-    let cardsSection = document.querySelector(".md\\:grid");
-    cardsSection.parentNode.insertBefore(milestone, cardsSection.nextSibling);
-});
-        // --- Mobile Menu Toggle ---
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
-
-        // --- Smooth Scroll & Active Link ---
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    mobileMenu.classList.add('hidden');
-                }
-            });
-        });
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.navbar-link');
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (window.scrollY >= (sectionTop - 150)) { current = section.getAttribute('id'); }
-            });
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) { link.classList.add('active'); }
-            });
-        });
-
-        // --- Donation Modal Logic ---
-        const donateModal = document.getElementById('donate-modal');
-        const closeModalBtn = document.getElementById('close-modal-btn');
-        const openModalBtns = document.querySelectorAll('.open-donate-modal');
-        const copyUpiBtn = document.getElementById('copy-upi-btn');
-        const upiIdSpan = document.getElementById('upi-id');
-        const copySuccessMsg = document.getElementById('copy-success-msg');
-        const openModal = () => donateModal.classList.remove('hidden');
-        const closeModal = () => donateModal.classList.add('hidden');
-        openModalBtns.forEach(btn => btn.addEventListener('click', openModal));
-        closeModalBtn.addEventListener('click', closeModal);
-        copyUpiBtn.addEventListener('click', () => {
-            navigator.clipboard.writeText(upiIdSpan.innerText).then(() => {
-                copySuccessMsg.innerText = 'Copied!';
-                setTimeout(() => { copySuccessMsg.innerText = ''; }, 2000);
-            });
-        });
-
-        // --- Accordion & Stats Carousel Logic ---
-        const toggleButtons = document.querySelectorAll('.toggle-details-btn');
-        let statsSwiper = null;
-        const statsData = [
-            { location: 'Bangarupalyam, A.P', perDay: '25 Meals Per Day', total: '54,825' },
-            { location: 'Hubli, Karnataka', perDay: '30 Meals Per Day', total: '7,740' },
-            { location: 'Chirala, A.P', perDay: '25 Meals Per Day', total: '5,700' },
-            { location: 'Balanagar, Telangana', perDay: '25 Meals Per Day', total: '1,725' }
-        ];
-        toggleButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const targetId = button.getAttribute('data-target');
-                const detailsContent = document.querySelector(targetId);
-                if (detailsContent) {
-                    const isHidden = detailsContent.classList.toggle('hidden');
-                    if (isHidden) { button.textContent = button.textContent.replace('Hide', 'View'); } 
-                    else { button.textContent = button.textContent.replace('View', 'Hide'); }
-
-                    const swiperContainer = detailsContent.querySelector('.stats-swiper');
-                    if (swiperContainer && !isHidden && !statsSwiper) {
-                        const swiperWrapper = swiperContainer.querySelector('.swiper-wrapper');
-                        statsData.forEach(stat => {
-                            const slide = document.createElement('div');
-                            slide.className = 'swiper-slide swiper-flip-card';
-                            slide.innerHTML = `<div class="swiper-flip-card-inner"><div class="swiper-flip-card-front"><p class="title">${stat.location}</p><p>${stat.perDay}</p></div><div class="swiper-flip-card-back"><p class="title">Total Meals</p><p style="font-size: 2.5em; font-weight: bold;">${stat.total}</p></div></div>`;
-                            slide.addEventListener('click', () => { slide.classList.toggle('is-flipped'); });
-                            swiperWrapper.appendChild(slide);
-                        });
-                        statsSwiper = new Swiper('.stats-swiper', {
-                            effect: 'slide',
-                            grabCursor: true,
-                            centeredSlides: true,
-                            slidesPerView: 'auto',
-                            loop: true,
-                            navigation: { nextEl: '.stats-swiper-nav.swiper-button-next', prevEl: '.stats-swiper-nav.swiper-button-prev' },
-                        });
-                    }
-                }
-            });
-        });
-
-        // --- WhatsApp Logic ---
-        document.getElementById('send-whatsapp-btn').addEventListener('click', function() {
-            const phoneNumber = '918884188880';
-            const messageInput = document.getElementById('whatsapp-message');
-            const messageText = messageInput.value;
-            if (messageText.trim() === '') {
-                alert('Please write a message before sending.');
-                return;
+    // --- Smooth Scroll & Active Link ---
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                mobileMenu.classList.add('hidden');
             }
-            const encodedMessage = encodeURIComponent(messageText);
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-            window.open(whatsappUrl, '_blank');
         });
-         function animateCounter(counter) {
-    const target = +counter.getAttribute('data-target');
-    let count = 0;
-    const speed = target / 200; // Adjust speed here
-
-    function updateCounter() {
-      count += speed;
-      if (count < target) {
-        counter.textContent = Math.floor(count);
-        requestAnimationFrame(updateCounter);
-      } else {
-        counter.textContent = target;
-      }
-    }
-    updateCounter();
-  }
-
-  // Trigger when visible
-  const counters = document.querySelectorAll('.counter');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        animateCounter(entry.target);
-        observer.unobserve(entry.target);
-      }
     });
-  }, { threshold: 0.5 });
+    window.addEventListener('scroll', () => {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.navbar-link');
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (window.scrollY >= (sectionTop - 150)) { current = section.getAttribute('id'); }
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) { link.classList.add('active'); }
+        });
+    });
 
-  counters.forEach(counter => observer.observe(counter));
-    </script>
+    // --- Donation Modal Logic ---
+    const donateModal = document.getElementById('donate-modal');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const openModalBtns = document.querySelectorAll('.open-donate-modal');
+    const copyUpiBtn = document.getElementById('copy-upi-btn');
+    const upiIdSpan = document.getElementById('upi-id');
+    const copySuccessMsg = document.getElementById('copy-success-msg');
+    const openModal = () => donateModal.classList.remove('hidden');
+    const closeModal = () => donateModal.classList.add('hidden');
+    openModalBtns.forEach(btn => btn.addEventListener('click', openModal));
+    closeModalBtn.addEventListener('click', closeModal);
+    copyUpiBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(upiIdSpan.innerText).then(() => {
+            copySuccessMsg.innerText = 'Copied!';
+            setTimeout(() => { copySuccessMsg.innerText = ''; }, 2000);
+        });
+    });
+
+    // --- WhatsApp Logic (RESTORED) ---
+    document.getElementById('send-whatsapp-btn').addEventListener('click', function() {
+        const phoneNumber = '918884188880';
+        const messageInput = document.getElementById('whatsapp-message');
+        const messageText = messageInput.value;
+        if (messageText.trim() === '') {
+            alert('Please write a message before sending.');
+            return;
+        }
+        const encodedMessage = encodeURIComponent(messageText);
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+        window.open(whatsappUrl, '_blank');
+    });
+
+    // --- Interactive Stat Card & Mini-Map Logic ---
+    const statCards = document.querySelectorAll('.stat-card');
+    const locations = [
+        { name: 'Bangarupalyam, A.P', coords: [13.1387, 78.9109], meals: '54,825', mapId: 'map-bangarupalyam' },
+        { name: 'Hubli, Karnataka', coords: [15.3647, 75.1240], meals: '7,740', mapId: 'map-hubli' },
+        { name: 'Chirala, A.P', coords: [15.8239, 80.3529], meals: '5,700', mapId: 'map-chirala' },
+        { name: 'Balanagar, Telangana', coords: [17.4724, 78.4323], meals: '1,725', mapId: 'map-balanagar' }
+    ];
+
+    statCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const statView = card.querySelector('.stat-view');
+            const mapView = card.querySelector('.map-view');
+            const locationIndex = card.getAttribute('data-location-index');
+            const locationData = locations[locationIndex];
+
+            statView.classList.toggle('hidden');
+            mapView.classList.toggle('hidden');
+
+            const isMapInitialized = card.getAttribute('data-map-initialized');
+            if (!isMapInitialized && !mapView.classList.contains('hidden')) {
+                card.setAttribute('data-map-initialized', 'true');
+                setTimeout(() => {
+                    const map = L.map(locationData.mapId).setView(locationData.coords, 10);
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '&copy; OpenStreetMap'
+                    }).addTo(map);
+
+                    const popupContent = `<b>${locationData.name}</b><br>${locationData.meals} meals served.`;
+                    L.marker(locationData.coords).addTo(map)
+                        .bindPopup(popupContent)
+                        .openPopup();
+                }, 10);
+            }
+        });
+    });
+</script>
 </body>
 </html>
