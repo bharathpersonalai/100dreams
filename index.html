@@ -1176,40 +1176,9 @@
         });
       });
     </script>
-    <!-- AOS JS -->
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Select all headings, images, sections, and main div blocks
-        const elements = document.querySelectorAll(
-          "h1, h2, h3, h4, h5, h6, p, img, section, article, .card, .container"
-        );
-
-        let animations = [
-          "fade-up",
-          "fade-down",
-          "fade-right",
-          "fade-left",
-          "zoom-in",
-          "zoom-out",
-        ];
-
-        elements.forEach((el, index) => {
-          // Pick animation style in rotation
-          el.setAttribute("data-aos", animations[index % animations.length]);
-          // Optional: delay each animation a little for nice stagger effect
-          el.setAttribute("data-aos-delay", (index % 6) * 100);
-          el.setAttribute("data-aos-duration", "800");
-        });
-
-        // Initialize AOS
-        AOS.init({
-          once: true, // animation runs only once
-          offset: 50, // start animation 50px before element is in view
-        });
-      });
-    </script>
-    <script>
+   <!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
   document.addEventListener("DOMContentLoaded", function () {
     const setAOS = (selector, opts = {}) => {
       document.querySelectorAll(selector).forEach((el, i) => {
@@ -1225,53 +1194,93 @@
         } else if (opts.delay != null) {
           el.setAttribute("data-aos-delay", opts.delay);
         }
-        if (opts.duration) el.setAttribute("data-aos-duration", opts.duration);
+        if (opts.duration)
+          el.setAttribute("data-aos-duration", opts.duration);
         if (opts.anchorPlacement)
           el.setAttribute("data-aos-anchor-placement", opts.anchorPlacement);
         if (opts.easing) el.setAttribute("data-aos-easing", opts.easing);
       });
     };
 
-    /* 1) Navbar */
-    setAOS("#navbar", { type: "fade-down", duration: 500 });
+    /* Navbar */
+    setAOS("#navbar", { type: "fade-down", duration: 650 });
 
-    /* 2) Hero */
-    setAOS("#home h1", { type: "zoom-in", duration: 600 });
-    setAOS("#home p", { type: "fade-up", delay: 100, duration: 600 });
-    setAOS("#home a, #home button", { type: "zoom-in-up", delay: 150, duration: 600 });
+    /* Hero */
+    setAOS("#home h1", { type: "zoom-in", duration: 700 });
+    setAOS("#home p", { type: "fade-up", delay: 100, duration: 700 });
+    setAOS("#home a, #home button", {
+      type: "zoom-in-up",
+      delay: 150,
+      duration: 700,
+    });
 
-    /* 3) Section titles + intro text */
-    setAOS("section h2", { type: "fade-up", duration: 500 });
-    setAOS("section p", { type: "fade-up", baseDelay: 30, delayStep: 30, duration: 500 });
+    /* Section titles + intro text */
+    setAOS("section h2", { type: "fade-up", duration: 650 });
+    setAOS("section p", {
+      type: "fade-up",
+      baseDelay: 30,
+      delayStep: 30,
+      duration: 650,
+    });
 
-    /* 4) Program cards */
-    setAOS("#programs .rounded-2xl", { type: "fade-up", delayStep: 80, duration: 500 });
-    setAOS("#programs img", { type: "zoom-in", delayStep: 60, duration: 450 });
+    /* Program cards */
+    setAOS("#programs .rounded-2xl", {
+      type: "fade-up",
+      delayStep: 80,
+      duration: 650,
+    });
+    setAOS("#programs img", {
+      type: "zoom-in",
+      delayStep: 60,
+      duration: 600,
+    });
 
-    /* 5) Contact form fields + social icons */
-    setAOS("#contact form > *", { type: "fade-up", delayStep: 50, duration: 450 });
-    setAOS("#contact .social-icon", { type: "zoom-in", delayStep: 50, duration: 450 });
+    /* Contact form fields + social icons */
+    setAOS("#contact form > *", {
+      type: "fade-up",
+      delayStep: 50,
+      duration: 600,
+    });
+    setAOS("#contact .social-icon", {
+      type: "zoom-in",
+      delayStep: 50,
+      duration: 600,
+    });
 
-    /* 6) Donate section */
-    setAOS("#donate img", { type: "zoom-in", duration: 500 });
-    setAOS('#donate .flex.items-center, #donate .space-y-4 > *', { type: "fade-up", delayStep: 50, duration: 500 });
+    /* Donate section */
+    setAOS("#donate img", { type: "zoom-in", duration: 650 });
+    setAOS("#donate .flex.items-center, #donate .space-y-4 > *", {
+      type: "fade-up",
+      delayStep: 50,
+      duration: 650,
+    });
 
-    /* 7) Founder section */
-    setAOS("#founder .founder-img-wrapper", { type: "zoom-in", duration: 500 });
-    setAOS("#founder .md\\:col-span-2 p", { type: "fade-up", delayStep: 80, duration: 500 });
-    setAOS("#founder .flex.flex-wrap > *", { type: "zoom-in", delayStep: 50, duration: 450 });
+    /* Founder section */
+    setAOS("#founder .founder-img-wrapper", {
+      type: "zoom-in",
+      duration: 650,
+    });
+    setAOS("#founder .md\\:col-span-2 p", {
+      type: "fade-up",
+      delayStep: 80,
+      duration: 650,
+    });
+    setAOS("#founder .flex.flex-wrap > *", {
+      type: "zoom-in",
+      delayStep: 50,
+      duration: 600,
+    });
 
-    /* 8) Footer */
-    setAOS("footer", { type: "fade-up", duration: 450 });
+    /* Footer */
+    setAOS("footer", { type: "fade-up", duration: 600 });
 
     // Init AOS
     AOS.init({
       once: true,
-      offset: 70, // slightly earlier start
-      duration: 500 // default speed
+      offset: 70,
+      duration: 550, // slightly slower default
     });
   });
 </script>
-
   </body>
 </html>
