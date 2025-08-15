@@ -2,10 +2,6 @@
 <html lang="en">
 <head>
     
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,11 +27,52 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <style>
-        .mini-map {
-    height: 250px;
-    border-radius: 0.5rem;
-} 
-        
+        /* -- Activity Ring Styles -- */
+.activity-ring-container {
+    padding: 1rem;
+    text-align: center;
+}
+.activity-ring {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+.activity-ring::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    border-style: solid;
+    /* The --ring-thickness is set in the HTML */
+    border-width: var(--ring-thickness, 8px); 
+    /* The --ring-color is set in the HTML */
+    border-color: var(--ring-color, #2C7A7B); 
+    animation: pulse-glow 2.5s infinite ease-in-out;
+}
+@keyframes pulse-glow {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 var(--glow-color, rgba(44, 122, 123, 0.7));
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 15px rgba(44, 122, 123, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(44, 122, 123, 0);
+  }
+}
+   
         /* Milestone Flip Card */
 .milestone-card {
   width: 100%;
@@ -227,7 +264,7 @@
 </head>
 
 <body class="bg-warm-bg">
-    <nav id="navbar" class="fixed top-0 w-full bg-white shadow-lg z-50 transition-all duration-300 h-20 flex items-center">
+   <nav id="navbar" class="fixed top-0 w-full bg-white shadow-lg z-50 transition-all duration-300 h-20 flex items-center">
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between">
                 <a href="#home"><img src="/Final Logo.png" alt="100 Dreams Logo" class="h-16 w-auto object-contain"></a>
@@ -288,52 +325,44 @@
                 <h2 class="text-4xl font-bold text-teal-primary mb-4">Our Programs</h2>
                 <p class="text-gray-600 text-lg max-w-2xl mx-auto">Discover the impactful initiatives we're running to create positive change</p>
             </div>
-            <div class="bg-white rounded-2xl shadow-lg p-8 mb-12">
-    <div class="grid md:grid-cols-2 gap-8 items-start">
+           <div class="bg-white rounded-2xl shadow-lg p-8 mb-12">
+    <div class="grid md:grid-cols-2 gap-8 items-center">
         <div class="flex flex-col h-full">
             <img src="/new-annasuktham.jpg" alt="Annasuktham" class="w-full h-56 object-cover rounded-lg mb-6">
             <h3 class="text-3xl font-bold text-teal-primary">Annasuktham</h3>
-            <p class="text-gray-600 mt-2 mb-6 flex-grow">Food for hungry souls, providing nutritious meals to those in need across multiple locations.</p>
+            <p class="text-gray-600 mt-2 flex-grow">Food for hungry souls, providing nutritious meals to those in need across multiple locations.</p>
         </div>
 
         <div>
-            <h4 class="text-xl font-bold text-center text-gray-800 mb-6">Meal Distribution Stats</h4>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <h4 class="text-xl font-bold text-center text-gray-800 mb-6">Live Impact Visualization</h4>
+            <div class="grid grid-cols-2 gap-4">
                 
-                <div class="stat-card cursor-pointer" data-location-index="0">
-                    <div class="stat-view bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition-shadow">
-                        <p class="font-semibold text-teal-primary text-lg">Bangarupalyam, A.P</p>
-                        <p class="text-5xl font-extrabold text-gray-800 my-2">54,825</p>
-                        <p class="text-base text-gray-500">25 MEALS PER DAY</p>
+                <div class="activity-ring-container">
+                    <div class="activity-ring" style="--ring-thickness: 12px; --ring-color: #2C7A7B; --glow-color: rgba(44, 122, 123, 0.7);">
+                        <span class="text-4xl font-extrabold text-gray-800">54,825</span>
                     </div>
-                    <div id="map-bangarupalyam" class="map-view hidden mini-map"></div>
+                    <p class="font-semibold text-gray-800 text-lg mt-3">Bangarupalyam, A.P</p>
                 </div>
 
-                <div class="stat-card cursor-pointer" data-location-index="1">
-                    <div class="stat-view bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition-shadow">
-                        <p class="font-semibold text-teal-primary text-lg">Hubli, Karnataka</p>
-                        <p class="text-5xl font-extrabold text-gray-800 my-2">7,740</p>
-                        <p class="text-base text-gray-500">30 MEALS PER DAY</p>
+                <div class="activity-ring-container">
+                    <div class="activity-ring" style="--ring-thickness: 6px; --ring-color: #38A89D; --glow-color: rgba(44, 122, 123, 0.4);">
+                        <span class="text-4xl font-extrabold text-gray-800">7,740</span>
                     </div>
-                    <div id="map-hubli" class="map-view hidden mini-map"></div>
+                    <p class="font-semibold text-gray-800 text-lg mt-3">Hubli, Karnataka</p>
                 </div>
 
-                <div class="stat-card cursor-pointer" data-location-index="2">
-                    <div class="stat-view bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition-shadow">
-                        <p class="font-semibold text-teal-primary text-lg">Chirala, A.P</p>
-                        <p class="text-5xl font-extrabold text-gray-800 my-2">5,700</p>
-                        <p class="text-base text-gray-500">25 MEALS PER DAY</p>
+                <div class="activity-ring-container">
+                    <div class="activity-ring" style="--ring-thickness: 5px; --ring-color: #81E6D9; --glow-color: rgba(44, 122, 123, 0.3);">
+                        <span class="text-4xl font-extrabold text-gray-800">5,700</span>
                     </div>
-                    <div id="map-chirala" class="map-view hidden mini-map"></div>
+                    <p class="font-semibold text-gray-800 text-lg mt-3">Chirala, A.P</p>
                 </div>
 
-                <div class="stat-card cursor-pointer" data-location-index="3">
-                    <div class="stat-view bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition-shadow">
-                        <p class="font-semibold text-teal-primary text-lg">Balanagar, Telangana</p>
-                        <p class="text-5xl font-extrabold text-gray-800 my-2">1,725</p>
-                        <p class="text-base text-gray-500">25 MEALS PER DAY</p>
+                <div class="activity-ring-container">
+                    <div class="activity-ring" style="--ring-thickness: 4px; --ring-color: #B2F5EA; --glow-color: rgba(44, 122, 123, 0.2);">
+                        <span class="text-4xl font-extrabold text-gray-800">1,725</span>
                     </div>
-                    <div id="map-balanagar" class="map-view hidden mini-map"></div>
+                    <p class="font-semibold text-gray-800 text-lg mt-3">Balanagar, Telangana</p>
                 </div>
             </div>
         </div>
@@ -615,8 +644,8 @@
             setTimeout(() => { copySuccessMsg.innerText = ''; }, 2000);
         });
     });
-
-    // --- WhatsApp Logic (RESTORED) ---
+    
+    // --- WhatsApp Logic ---
     document.getElementById('send-whatsapp-btn').addEventListener('click', function() {
         const phoneNumber = '918884188880';
         const messageInput = document.getElementById('whatsapp-message');
@@ -630,42 +659,6 @@
         window.open(whatsappUrl, '_blank');
     });
 
-    // --- Interactive Stat Card & Mini-Map Logic ---
-    const statCards = document.querySelectorAll('.stat-card');
-    const locations = [
-        { name: 'Bangarupalyam, A.P', coords: [13.1387, 78.9109], meals: '54,825', mapId: 'map-bangarupalyam' },
-        { name: 'Hubli, Karnataka', coords: [15.3647, 75.1240], meals: '7,740', mapId: 'map-hubli' },
-        { name: 'Chirala, A.P', coords: [15.8239, 80.3529], meals: '5,700', mapId: 'map-chirala' },
-        { name: 'Balanagar, Telangana', coords: [17.4724, 78.4323], meals: '1,725', mapId: 'map-balanagar' }
-    ];
-
-    statCards.forEach(card => {
-        card.addEventListener('click', () => {
-            const statView = card.querySelector('.stat-view');
-            const mapView = card.querySelector('.map-view');
-            const locationIndex = card.getAttribute('data-location-index');
-            const locationData = locations[locationIndex];
-
-            statView.classList.toggle('hidden');
-            mapView.classList.toggle('hidden');
-
-            const isMapInitialized = card.getAttribute('data-map-initialized');
-            if (!isMapInitialized && !mapView.classList.contains('hidden')) {
-                card.setAttribute('data-map-initialized', 'true');
-                setTimeout(() => {
-                    const map = L.map(locationData.mapId).setView(locationData.coords, 10);
-                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                        attribution: '&copy; OpenStreetMap'
-                    }).addTo(map);
-
-                    const popupContent = `<b>${locationData.name}</b><br>${locationData.meals} meals served.`;
-                    L.marker(locationData.coords).addTo(map)
-                        .bindPopup(popupContent)
-                        .openPopup();
-                }, 10);
-            }
-        });
-    });
 </script>
 </body>
 </html>
