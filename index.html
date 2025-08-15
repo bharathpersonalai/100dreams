@@ -273,31 +273,31 @@
         </div>
     </nav>
 
-    <section id="home" class="hero-bg min-h-screen flex items-center justify-center text-white pt-8">
-  <div class="container mx-auto px-4 text-center">
-    <div class="mb-8">
-      <h1 class="text-4xl md:text-6xl font-bold mb-6">Making a Difference Together</h1>
-      <div class="flex flex-col md:flex-row justify-center gap-8 text-lg font-medium mb-10">
-        <div>
-          <span class="counter text-3xl font-bold text-yellow-400" data-target="69990">0</span>+
-          <p>Meals Served</p>
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center text-white pt-20">
+    <div class="container mx-auto px-4 text-center">
+        
+     
+        <div class="hero-section flex flex-col sm:flex-row items-center justify-center sm:justify-around gap-8 text-white my-12 max-w-4xl mx-auto">
+            <div>
+              <span class="counter text-4xl font-bold" data-target="69990">0</span>+
+              <p class="text-sm font-light uppercase tracking-widest">Meals Served</p>
+            </div>
+            <div>
+              <span class="counter text-4xl font-bold" data-target="250">0</span>+
+              <p class="text-sm font-light uppercase tracking-widest">Blood Donations</p>
+            </div>
+            <div>
+              <span class="counter text-4xl font-bold" data-target="4">0</span>+
+              <p class="text-sm font-light uppercase tracking-widest">Villages Supported</p>
+            </div>
         </div>
+
         <div>
-          <span class="counter text-3xl font-bold text-yellow-400" data-target="800">0</span>+
-          <p>Children Educated</p>
+            <button class="open-donate-modal bg-golden-accent hover:bg-yellow-500 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+                Donate Now
+            </button>
         </div>
-        <div>
-          <span class="counter text-3xl font-bold text-yellow-400" data-target="15">0</span>+
-          <p>Villages Supported</p>
-        </div>
-      </div>
     </div>
-    <div>
-      <button class="open-donate-modal bg-golden-accent hover:bg-yellow-500 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
-        Donate Now
-      </button>
-    </div>
-  </div>
 </section>
 
 
@@ -314,8 +314,8 @@
         
         <div class="flex flex-col">
             <img src="/new-annasuktham.jpg" alt="Annasuktham" class="w-full h-56 object-cover rounded-lg mb-6">
-            <h3 class="text-3xl font-bold text-teal-primary">Annasuktham</h3>
-            <p class="text-gray-600 mt-2">Food for hungry souls, providing nutritious meals to those in need across multiple locations.</p>
+            <h3 class="text-3xl font-bold text-teal-primary">Annashooktham</h3>
+            <p class="text-gray-600 mt-2">"Hunger is more than an empty stomach , it’s a silent cry for help. At Annashooktham, every plate we serve carries love, dignity, and hope. We reach out to the forgotten, the struggling, and the unseen, ensuring that no soul feels alone in their fight against hunger. Together, we can turn empathy into action, and action into a better tomorrow."</p>
             
             <div class="mt-8 text-center border-t border-gray-200 pt-6">
                 <p class="text-gray-600 text-lg">Total Meals Distributed</p>
@@ -736,6 +736,32 @@ document.addEventListener('DOMContentLoaded', () => {
         if (counter) {
             observer.observe(counter);
         }
+    });
+});
+// --- Hero Section Counter Animation ---
+document.addEventListener('DOMContentLoaded', () => {
+    const heroCounters = document.querySelectorAll('.hero-section .counter'); // Assuming they are in a hero-section container for specificity
+    
+    // If not, a more general selector can be used if they are the only .counter elements
+    // const heroCounters = document.querySelectorAll('.counter'); 
+
+    const speed = 200; // Adjust for animation speed, lower is faster
+
+    heroCounters.forEach(counter => {
+        const animate = () => {
+            const target = +counter.getAttribute('data-target');
+            const count = +counter.innerText.replace(/,/g, '');
+
+            const increment = target / speed;
+
+            if (count < target) {
+                counter.innerText = Math.ceil(count + increment);
+                setTimeout(animate, 10); // Run the animation frame
+            } else {
+                counter.innerText = target.toLocaleString(); // Add commas to the final number
+            }
+        };
+        animate(); // Start the animation
     });
 });
 
