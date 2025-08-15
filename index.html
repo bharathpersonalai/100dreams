@@ -283,6 +283,15 @@
         font-size: 0.875rem;
       }
     </style>
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+    <style>
+      /* This makes sure when you click menu links, the section isn't hidden behind the navbar */
+      section[id] {
+        scroll-margin-top: 5rem;
+      }
+    </style>
   </head>
 
   <body class="bg-warm-bg">
@@ -1164,6 +1173,46 @@
             }
           };
           animate(); // Start the animation
+        });
+      });
+    </script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 800, // how long animation lasts
+        easing: "ease-out", // animation style
+        once: true, // animate only first time
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Select all headings, images, sections, and main div blocks
+        const elements = document.querySelectorAll(
+          "h1, h2, h3, h4, h5, h6, p, img, section, article, .card, .container"
+        );
+
+        let animations = [
+          "fade-up",
+          "fade-down",
+          "fade-right",
+          "fade-left",
+          "zoom-in",
+          "zoom-out",
+        ];
+
+        elements.forEach((el, index) => {
+          // Pick animation style in rotation
+          el.setAttribute("data-aos", animations[index % animations.length]);
+          // Optional: delay each animation a little for nice stagger effect
+          el.setAttribute("data-aos-delay", (index % 6) * 100);
+          el.setAttribute("data-aos-duration", "800");
+        });
+
+        // Initialize AOS
+        AOS.init({
+          once: true, // animation runs only once
+          offset: 50, // start animation 50px before element is in view
         });
       });
     </script>
