@@ -27,50 +27,34 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <style>
-        /* -- Activity Ring Styles -- */
-.activity-ring-container {
-    padding: 1rem;
+      /* -- Live Impact Ring Styles -- */
+.impact-ring-container {
     text-align: center;
 }
-.activity-ring {
-    width: 200px;
-    height: 200px;
+.impact-ring {
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
-    position: relative;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-}
-.activity-ring::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     border-style: solid;
-    /* The --ring-thickness is set in the HTML */
-    border-width: var(--ring-thickness, 8px); 
-    /* The --ring-color is set in the HTML */
-    border-color: var(--ring-color, #2C7A7B); 
-    animation: pulse-glow 2.5s infinite ease-in-out;
+    /* Dynamic styles will be added by JavaScript */
+    border-width: var(--ring-thickness, 8px);
+    border-color: var(--ring-color, #2C7A7B);
 }
-@keyframes pulse-glow {
-  0% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 var(--glow-color, rgba(44, 122, 123, 0.7));
-  }
-  70% {
-    transform: scale(1);
-    box-shadow: 0 0 0 15px rgba(44, 122, 123, 0);
-  }
-  100% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(44, 122, 123, 0);
-  }
+.impact-ring:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+.impact-count {
+    font-size: 2.5rem; /* 4xl */
+    font-weight: 800; /* extrabold */
+    color: #1a202c; /* gray-900 */
 }
    
         /* Milestone Flip Card */
@@ -325,54 +309,56 @@
                 <h2 class="text-4xl font-bold text-teal-primary mb-4">Our Programs</h2>
                 <p class="text-gray-600 text-lg max-w-2xl mx-auto">Discover the impactful initiatives we're running to create positive change</p>
             </div>
-           <div class="bg-white rounded-2xl shadow-lg p-8 mb-12">
-    <div class="grid md:grid-cols-2 gap-8 items-center">
-        <div class="flex flex-col h-full">
+         <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-12">
+    <div class="grid md:grid-cols-2 gap-8 items-start">
+        
+        <div class="flex flex-col">
             <img src="/new-annasuktham.jpg" alt="Annasuktham" class="w-full h-56 object-cover rounded-lg mb-6">
             <h3 class="text-3xl font-bold text-teal-primary">Annasuktham</h3>
-            <p class="text-gray-600 mt-2 flex-grow">Food for hungry souls, providing nutritious meals to those in need across multiple locations.</p>
+            <p class="text-gray-600 mt-2">Food for hungry souls, providing nutritious meals to those in need across multiple locations.</p>
+            
+            <div class="mt-8 text-center border-t border-gray-200 pt-6">
+                <p class="text-gray-600 text-lg">Total Meals Distributed</p>
+                <p id="grand-total-count" class="text-6xl font-extrabold text-red-600 my-2" data-goal="69990">0</p>
+                <p class="text-gray-500">across all locations</p>
+            </div>
         </div>
 
         <div>
-            <h4 class="text-xl font-bold text-center text-gray-800 mb-6">Live Impact Visualization</h4>
-            <div class="grid grid-cols-2 gap-4">
+            <h4 class="text-xl font-bold text-center text-gray-800 mb-6">Area Wise Distribution Stats</h4>
+            <div class="grid grid-cols-2 gap-y-8 gap-x-4">
                 
-                <div class="activity-ring-container">
-                    <div class="activity-ring" style="--ring-thickness: 12px; --ring-color: #2C7A7B; --glow-color: rgba(44, 122, 123, 0.7);">
-                        <span class="text-4xl font-extrabold text-gray-800">54,825</span>
+                <div class="impact-ring-container" data-meals="54825">
+                    <div class="impact-ring">
+                        <span class="impact-count" data-goal="54825">0</span>
                     </div>
-                    <p class="font-semibold text-gray-800 text-lg mt-3">Bangarupalyam, A.P</p>
+                    <p class="font-semibold text-gray-700 text-base mt-3">Bangarupalyam, A.P</p>
                 </div>
 
-                <div class="activity-ring-container">
-                    <div class="activity-ring" style="--ring-thickness: 6px; --ring-color: #38A89D; --glow-color: rgba(44, 122, 123, 0.4);">
-                        <span class="text-4xl font-extrabold text-gray-800">7,740</span>
+                <div class="impact-ring-container" data-meals="7740">
+                    <div class="impact-ring">
+                        <span class="impact-count" data-goal="7740">0</span>
                     </div>
-                    <p class="font-semibold text-gray-800 text-lg mt-3">Hubli, Karnataka</p>
+                    <p class="font-semibold text-gray-700 text-base mt-3">Hubli, Karnataka</p>
                 </div>
 
-                <div class="activity-ring-container">
-                    <div class="activity-ring" style="--ring-thickness: 5px; --ring-color: #81E6D9; --glow-color: rgba(44, 122, 123, 0.3);">
-                        <span class="text-4xl font-extrabold text-gray-800">5,700</span>
+                <div class="impact-ring-container" data-meals="5700">
+                    <div class="impact-ring">
+                        <span class="impact-count" data-goal="5700">0</span>
                     </div>
-                    <p class="font-semibold text-gray-800 text-lg mt-3">Chirala, A.P</p>
+                    <p class="font-semibold text-gray-700 text-base mt-3">Chirala, A.P</p>
                 </div>
 
-                <div class="activity-ring-container">
-                    <div class="activity-ring" style="--ring-thickness: 4px; --ring-color: #B2F5EA; --glow-color: rgba(44, 122, 123, 0.2);">
-                        <span class="text-4xl font-extrabold text-gray-800">1,725</span>
+                <div class="impact-ring-container" data-meals="1725">
+                    <div class="impact-ring">
+                        <span class="impact-count" data-goal="1725">0</span>
                     </div>
-                    <p class="font-semibold text-gray-800 text-lg mt-3">Balanagar, Telangana</p>
+                    <p class="font-semibold text-gray-700 text-base mt-3">Balanagar, Telangana</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
-           
-
-                    </div>
-                </div>
-            </div>
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="bg-white rounded-2xl shadow-lg flex flex-col"><div class="p-8 flex-grow"><img src="/new-sindhura sanjeevani.jpg" alt="Sindhura Sanjeevani" class="w-full h-56 object-cover rounded-lg mb-6"><h3 class="text-3xl font-bold text-teal-primary">Sindhura Sanjeevani</h3><p class="text-gray-600 mt-2">A comprehensive healthcare initiative for underserved communities, focusing on blood donation camps and health awareness.</p></div></div>
                 <div class="bg-white rounded-2xl shadow-lg flex flex-col"><div class="p-8 flex-grow"><img src="/new-organ donation.jpg" alt="Organ Donation" class="w-full h-56 object-cover rounded-lg mb-6"><h3 class="text-3xl font-bold text-teal-primary">Organ Donation</h3><p class="text-gray-600 mt-2">Raising awareness and facilitating the life-saving process of organ donation.</p></div></div>
@@ -658,6 +644,100 @@
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
         window.open(whatsappUrl, '_blank');
     });
+    // --- Grand Total Animated Counter ---
+document.addEventListener('DOMContentLoaded', () => {
+    const totalCounter = document.getElementById('grand-total-count');
+
+    if (totalCounter) {
+        const animateCountUp = (el) => {
+            const target = +el.getAttribute('data-goal');
+            el.innerText = '0';
+            const updateCount = () => {
+                const count = +el.innerText.replace(/,/g, '');
+                const speed = 200; // Adjust for slower/faster count
+                const increment = target / speed;
+                if (count < target) {
+                    el.innerText = Math.ceil(count + increment);
+                    setTimeout(updateCount, 20);
+                } else {
+                    el.innerText = target.toLocaleString();
+                }
+            };
+            updateCount();
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCountUp(entry.target);
+                    observer.unobserve(entry.target); // Animate only once
+                }
+            });
+        }, { threshold: 0.5 }); // Trigger when 50% of the element is visible
+        
+        observer.observe(totalCounter);
+    }
+});
+// --- Live Impact Visualization & Total Counter Logic ---
+document.addEventListener('DOMContentLoaded', () => {
+    // --- Logic for dynamic ring styles ---
+    const ringContainers = document.querySelectorAll('.impact-ring-container');
+    if (ringContainers.length > 0) {
+        let maxMeals = 0;
+        ringContainers.forEach(container => {
+            const meals = parseInt(container.dataset.meals);
+            if (meals > maxMeals) maxMeals = meals;
+        });
+
+        ringContainers.forEach(container => {
+            const meals = parseInt(container.dataset.meals);
+            const ratio = meals / maxMeals;
+            const ring = container.querySelector('.impact-ring');
+            
+            const thickness = Math.max(4, Math.ceil(14 * ratio));
+            const opacity = Math.max(0.3, ratio);
+
+            if (ring) {
+                ring.style.setProperty('--ring-thickness', `${thickness}px`);
+                ring.style.setProperty('--ring-color', `rgba(44, 122, 123, ${opacity})`);
+            }
+        });
+    }
+
+    // --- Logic for all animated counters ---
+    const animateCountUp = (el) => {
+        const target = +el.getAttribute('data-goal');
+        el.innerText = '0';
+        const updateCount = () => {
+            const count = +el.innerText.replace(/,/g, '');
+            const speed = 150;
+            const increment = target / speed;
+            if (count < target) {
+                el.innerText = Math.ceil(count + increment);
+                setTimeout(updateCount, 20);
+            } else {
+                el.innerText = target.toLocaleString();
+            }
+        };
+        updateCount();
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCountUp(entry.target);
+                observer.unobserve(entry.target); // Animate only once
+            }
+        });
+    }, { threshold: 0.2 });
+
+    // Find all counters (the grand total AND the individual rings) and observe them
+    document.querySelectorAll('#grand-total-count, .impact-count').forEach(counter => {
+        if (counter) {
+            observer.observe(counter);
+        }
+    });
+});
 
 </script>
 </body>
