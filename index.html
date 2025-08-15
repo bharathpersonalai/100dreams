@@ -287,94 +287,96 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
 
     <style>
-    /* ===== Gallery Stage ===== */
-.gallery-stage {
-  position: relative;
-  width: 90%;
-  max-width: 600px;
-  margin: auto;
-  perspective: 1000px;
-}
+      /* ===== Gallery Stage ===== */
+      .gallery-stage {
+        position: relative;
+        width: 90%;
+        max-width: 600px;
+        margin: auto;
+        perspective: 1000px;
+      }
 
-.gallery-tilt {
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.3s ease;
-}
+      .gallery-tilt {
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 0.3s ease;
+      }
 
-.gallery-image {
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease;
-}
+      .gallery-image {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+      }
 
-.gallery-tilt:hover {
-  transform: rotateY(10deg) rotateX(5deg) scale(1.02);
-}
+      .gallery-tilt:hover {
+        transform: rotateY(10deg) rotateX(5deg) scale(1.02);
+      }
 
-.gallery-glare {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), transparent);
-  pointer-events: none;
-  border-radius: 12px;
-}
+      .gallery-glare {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle at 30% 30%,
+          rgba(255, 255, 255, 0.4),
+          transparent
+        );
+        pointer-events: none;
+        border-radius: 12px;
+      }
 
-/* ===== Navigation Buttons ===== */
-.gallery-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
-  color: white;
-  border: none;
-  padding: 10px 14px;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 2;
-  transition: background 0.3s ease;
-}
+      /* ===== Navigation Buttons ===== */
+      .gallery-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 10px 14px;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 2;
+        transition: background 0.3s ease;
+      }
 
-.gallery-btn:hover {
-  background: rgba(0,0,0,0.7);
-}
+      .gallery-btn:hover {
+        background: rgba(0, 0, 0, 0.7);
+      }
 
-.gallery-btn.prev {
-  left: -50px;
-}
+      .gallery-btn.prev {
+        left: -50px;
+      }
 
-.gallery-btn.next {
-  right: -50px;
-}
+      .gallery-btn.next {
+        right: -50px;
+      }
 
-/* ===== Counter ===== */
-.gallery-counter {
-  text-align: center;
-  margin-top: 15px;
-  font-weight: bold;
-  color: #555;
-}
-.gallery-image {
-  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-}
+      /* ===== Counter ===== */
+      .gallery-counter {
+        text-align: center;
+        margin-top: 15px;
+        font-weight: bold;
+        color: #555;
+      }
+      .gallery-image {
+        transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+      }
 
-.gallery-image.fade-out {
-  opacity: 0;
-  transform: translateX(-20px);
-}
+      .gallery-image.fade-out {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
 
-.gallery-image.fade-in {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-
+      .gallery-image.fade-in {
+        opacity: 1;
+        transform: translateX(0);
+      }
     </style>
   </head>
 
@@ -634,12 +636,10 @@
                 alt="Organ Donation"
                 class="w-full h-58 object-cover rounded-lg mb-6"
               />
-              <h3 class="text-3xl font-bold text-teal-primary">
-                Punarapi
-              </h3>
+              <h3 class="text-3xl font-bold text-teal-primary">Punarapi</h3>
               <p class="text-gray-600 mt-2">
-                Punarapi is a Raising awareness and facilitating the life-saving process of
-                organ donation.
+                Punarapi is a Raising awareness and facilitating the life-saving
+                process of organ donation.
               </p>
               <p class="text-gray-600 mt-2">
                 Every organ donated is not just a part of the body ❤️ it is a
@@ -657,7 +657,9 @@
                 alt="Dinabandu"
                 class="w-full h-58 object-cover rounded-lg mb-6"
               />
-              <h3 class="text-3xl font-bold text-teal-primary">Dheena Bandhu</h3>
+              <h3 class="text-3xl font-bold text-teal-primary">
+                Dheena Bandhu
+              </h3>
               <p class="text-gray-600 mt-2">
                 Dheena bandhu extends a compassionate hand to grieving families,
                 easing the burden during one of life’s most difficult moments.
@@ -672,34 +674,40 @@
     </section>
     <!-- Gallery Section -->
     <section id="gallery" class="py-20 bg-white" data-aos="fade-up">
-  <div class="container mx-auto px-4">
-    <div class="text-center mb-10">
-      <h2 class="text-4xl font-bold text-teal-primary mb-3">Gallery</h2>
-      <p class="text-gray-600 text-lg">Swipe left or right to explore our moments</p>
-    </div>
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-10">
+          <h2 class="text-4xl font-bold text-teal-primary mb-3">Gallery</h2>
+          <p class="text-gray-600 text-lg">
+            Swipe left or right to explore our moments
+          </p>
+        </div>
 
-    <!-- Stage -->
-    <div class="gallery-stage mx-auto">
-      <div class="gallery-tilt">
-        <img id="galleryImage" src="/assets/gallery/img1.jpg" alt="Gallery image" class="gallery-image" />
+        <!-- Stage -->
+        <div class="gallery-stage mx-auto">
+          <div class="gallery-tilt">
+            <img
+              id="galleryImage"
+              src="/assets/gallery/img1.jpg"
+              alt="Gallery image"
+              class="gallery-image"
+            />
+          </div>
+
+          <!-- Navigation -->
+          <button class="gallery-btn prev" aria-label="Previous image">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="gallery-btn next" aria-label="Next image">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+
+          <!-- Counter -->
+          <div class="gallery-counter">
+            <span id="galleryCounter">1 / 6</span>
+          </div>
+        </div>
       </div>
-
-      <!-- Navigation -->
-      <button class="gallery-btn prev" aria-label="Previous image">
-        <i class="fas fa-chevron-left"></i>
-      </button>
-      <button class="gallery-btn next" aria-label="Next image">
-        <i class="fas fa-chevron-right"></i>
-      </button>
-
-      <!-- Counter -->
-      <div class="gallery-counter">
-        <span id="galleryCounter">1 / 6</span>
-      </div>
-    </div>
-  </div>
-</section>
-
+    </section>
 
     <section id="contact" class="py-20 bg-gray-50">
       <div class="container mx-auto px-4">
@@ -1053,7 +1061,7 @@
         </div>
         <div class="border-t border-gray-700 mt-8 pt-8 text-center">
           <p class="text-gray-400">
-            © 2024 100 Dreams. All rights reserved.  Designed with ❤️ for
+            © 2024 100 Dreams. All rights reserved. Designed with ❤️ for
             change-making
           </p>
         </div>
@@ -1416,11 +1424,11 @@
           duration: 550, // slightly slower default
         });
       });
-// --- Single Image Swipe Gallery with 3D Hover + Counter + Smooth Transition ---
-document.addEventListener("DOMContentLoaded", function () {
+      // --- Single Image Swipe Gallery with 3D Hover + Counter + Smooth Transition ---
+      document.addEventListener("DOMContentLoaded", function () {
   const galleryContainer = document.querySelector("#gallery");
-  const galleryImage = document.querySelector("#galleryImage"); // use your actual ID
-  const counterElement = document.querySelector("#galleryCounter"); // counter span
+  const galleryImage = document.querySelector("#galleryImage");
+  const counterElement = document.querySelector("#galleryCounter");
 
   if (!galleryContainer || !galleryImage) return;
 
@@ -1436,53 +1444,53 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentIndex = 0;
 
   function showImage(index) {
-    // Add smooth fade transition
-    galleryImage.style.transition = "opacity 0.5s ease";
+    galleryImage.style.transition = "opacity 0.5s ease, transform 0.5s ease";
     galleryImage.style.opacity = 0;
 
     setTimeout(() => {
       galleryImage.src = images[index];
       galleryImage.style.opacity = 1;
+
+      // Optional: 6th image fit
+      if (index === 5) {
+        galleryImage.style.objectFit = "contain";
+      } else {
+        galleryImage.style.objectFit = "cover";
+      }
     }, 200);
 
-    // Update counter
     if (counterElement) {
       counterElement.textContent = `${index + 1} / ${images.length}`;
     }
   }
 
-  // Swipe detection
   let startX = 0;
-  galleryContainer.addEventListener("touchstart", e => {
+  galleryContainer.addEventListener("touchstart", (e) => {
     startX = e.touches[0].clientX;
   });
 
-  galleryContainer.addEventListener("touchend", e => {
+  galleryContainer.addEventListener("touchend", (e) => {
     const endX = e.changedTouches[0].clientX;
     if (startX - endX > 50) {
-      // swipe left → next
       currentIndex = (currentIndex + 1) % images.length;
       showImage(currentIndex);
     } else if (endX - startX > 50) {
-      // swipe right → prev
       currentIndex = (currentIndex - 1 + images.length) % images.length;
       showImage(currentIndex);
     }
   });
 
-  // Mouse click navigation (click → next)
   galleryContainer.addEventListener("click", () => {
     currentIndex = (currentIndex + 1) % images.length;
     showImage(currentIndex);
   });
 
-  // 3D hover effect
-  galleryContainer.addEventListener("mousemove", e => {
+  galleryContainer.addEventListener("mousemove", (e) => {
     const { width, height, left, top } = galleryContainer.getBoundingClientRect();
     const x = e.clientX - left;
     const y = e.clientY - top;
-    const rotateX = ((y / height) - 0.5) * 20; 
-    const rotateY = ((x / width) - 0.5) * -20;
+    const rotateX = (y / height - 0.5) * 20;
+    const rotateY = (x / width - 0.5) * -20;
     galleryImage.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
   });
 
@@ -1490,11 +1498,18 @@ document.addEventListener("DOMContentLoaded", function () {
     galleryImage.style.transform = "rotateX(0) rotateY(0) scale(1)";
   });
 
-  // Init
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") {
+      currentIndex = (currentIndex + 1) % images.length;
+      showImage(currentIndex);
+    } else if (e.key === "ArrowLeft") {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      showImage(currentIndex);
+    }
+  });
+
   showImage(currentIndex);
 });
-
-
 
     </script>
   </body>
