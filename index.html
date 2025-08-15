@@ -291,87 +291,133 @@
       section[id] {
         scroll-margin-top: 5rem;
       }
+      .gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 250px;         /* fixed height for all images */
+  object-fit: cover;     /* keeps proportions but fills box */
+  border-radius: 8px;
+}
+
+/* Adjust vertical crop for specific images */
+.gallery-grid img:nth-child(2) {
+  object-position: center 30%; /* moves img2 slightly down */
+}
+
+.gallery-grid img:nth-child(5) {
+  object-position: center 35%; /* moves img5 */
+}
+
+.gallery-grid img:nth-child(6) {
+  object-position: center 10%; /* moves img6 */
+}
+
+
     </style>
   </head>
 
   <body class="bg-warm-bg">
     <nav
-      id="navbar"
-      class="fixed top-0 w-full bg-white shadow-lg z-50 transition-all duration-300 h-20 flex items-center"
-    >
-      <div class="container mx-auto px-4">
-        <div class="flex items-center justify-between">
-          <a href="#home"
-            ><img
-              src="/Final Logo.png"
-              alt="100 Dreams Logo"
-              class="h-16 w-auto object-contain"
-          /></a>
-          <div class="hidden md:flex space-x-8">
-            <a
-              href="#home"
-              class="navbar-link text-gray-700 hover:text-golden-accent transition-colors"
-              >Home</a
-            >
-            <a
-              href="#programs"
-              class="navbar-link text-gray-700 hover:text-golden-accent transition-colors"
-              >Programs</a
-            >
-            <a
-              href="#contact"
-              class="navbar-link text-gray-700 hover:text-golden-accent transition-colors"
-              >Contact</a
-            >
-            <a
-              href="#donate"
-              class="navbar-link text-gray-700 hover:text-golden-accent transition-colors"
-              >Donate</a
-            >
-            <a
-              href="#founder"
-              class="navbar-link text-gray-700 hover:text-golden-accent transition-colors"
-              >About Founder</a
-            >
-          </div>
-          <button id="mobile-menu-btn" class="md:hidden text-teal-primary">
-            <i class="fas fa-bars text-xl"></i>
-          </button>
-        </div>
-        <div
-          id="mobile-menu"
-          class="hidden md:hidden absolute top-20 left-0 w-full bg-white shadow-lg p-4"
+  id="navbar"
+  class="fixed top-0 w-full bg-white shadow-lg z-50 transition-all duration-300 h-20 flex items-center"
+>
+  <div class="container mx-auto px-4">
+    <div class="flex items-center justify-between">
+      <a href="#home"
+        ><img
+          src="/Final Logo.png"
+          alt="100 Dreams Logo"
+          class="h-16 w-auto object-contain"
+      /></a>
+      <div class="hidden md:flex space-x-8">
+        <a
+          href="#home"
+          class="navbar-link text-gray-700 hover:text-golden-accent transition-colors"
+          >Home</a
         >
-          <div class="flex flex-col space-y-4">
-            <a
-              href="#home"
-              class="navbar-link text-gray-700 hover:text-golden-accent transition-colors block text-center py-2 rounded-md"
-              >Home</a
-            >
-            <a
-              href="#programs"
-              class="navbar-link text-gray-700 hover:text-golden-accent transition-colors block text-center py-2 rounded-md"
-              >Programs</a
-            >
-            <a
-              href="#contact"
-              class="navbar-link text-gray-700 hover:text-golden-accent transition-colors block text-center py-2 rounded-md"
-              >Contact</a
-            >
-            <a
-              href="#donate"
-              class="navbar-link text-gray-700 hover:text-golden-accent transition-colors block text-center py-2 rounded-md"
-              >Donate</a
-            >
-            <a
-              href="#founder"
-              class="navbar-link text-gray-700 hover:text-golden-accent transition-colors block text-center py-2 rounded-md"
-              >About Founder</a
-            >
-          </div>
-        </div>
+        <a
+          href="#programs"
+          class="navbar-link text-gray-700 hover:text-golden-accent transition-colors"
+          >Programs</a
+        >
+
+        <!-- New Gallery Link -->
+        <a
+          href="#gallery"
+          class="navbar-link text-gray-700 hover:text-golden-accent transition-colors"
+          >Gallery</a
+        >
+
+        <a
+          href="#contact"
+          class="navbar-link text-gray-700 hover:text-golden-accent transition-colors"
+          >Contact</a
+        >
+        <a
+          href="#donate"
+          class="navbar-link text-gray-700 hover:text-golden-accent transition-colors"
+          >Donate</a
+        >
+        <a
+          href="#founder"
+          class="navbar-link text-gray-700 hover:text-golden-accent transition-colors"
+          >About Founder</a
+        >
       </div>
-    </nav>
+      <button id="mobile-menu-btn" class="md:hidden text-teal-primary">
+        <i class="fas fa-bars text-xl"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div
+      id="mobile-menu"
+      class="hidden md:hidden absolute top-20 left-0 w-full bg-white shadow-lg p-4"
+    >
+      <div class="flex flex-col space-y-4">
+        <a
+          href="#home"
+          class="navbar-link text-gray-700 hover:text-golden-accent transition-colors block text-center py-2 rounded-md"
+          >Home</a
+        >
+        <a
+          href="#programs"
+          class="navbar-link text-gray-700 hover:text-golden-accent transition-colors block text-center py-2 rounded-md"
+          >Programs</a
+        >
+
+        <!-- New Gallery Link for Mobile -->
+        <a
+          href="#gallery"
+          class="navbar-link text-gray-700 hover:text-golden-accent transition-colors block text-center py-2 rounded-md"
+          >Gallery</a
+        >
+
+        <a
+          href="#contact"
+          class="navbar-link text-gray-700 hover:text-golden-accent transition-colors block text-center py-2 rounded-md"
+          >Contact</a
+        >
+        <a
+          href="#donate"
+          class="navbar-link text-gray-700 hover:text-golden-accent transition-colors block text-center py-2 rounded-md"
+          >Donate</a
+        >
+        <a
+          href="#founder"
+          class="navbar-link text-gray-700 hover:text-golden-accent transition-colors block text-center py-2 rounded-md"
+          >About Founder</a
+        >
+      </div>
+    </div>
+  </div>
+</nav>
+
 
     <section
       id="home"
@@ -568,6 +614,29 @@
         </div>
       </div>
     </section>
+    <!-- Gallery Section -->
+<section id="gallery" class="py-12 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-8">Gallery</h2>
+    <div class="gallery-grid">
+      <img src="/assets/gallery/img1.jpg" alt="Gallery Image 1">
+      <img src="/assets/gallery/img2.jpg" alt="Gallery Image 2">
+      <img src="/assets/gallery/img3.jpg" alt="Gallery Image 3">
+      <img src="/assets/gallery/img4.jpg" alt="Gallery Image 4">
+      <img src="/assets/gallery/img5.jpg" alt="Gallery Image 5">
+      <img src="/assets/gallery/img6.jpg" alt="Gallery Image 6">
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+  <div class="bg-white p-4 rounded-lg shadow-lg">
+    <img id="lightbox-img" src="" alt="Enlarged" class="max-w-[80vw] max-h-[80vh] rounded">
+  </div>
+</div>
+
+
 
     <section id="contact" class="py-20 bg-gray-50">
       <div class="container mx-auto px-4">
@@ -1176,111 +1245,201 @@
         });
       });
     </script>
-   <!-- AOS JS -->
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const setAOS = (selector, opts = {}) => {
-      document.querySelectorAll(selector).forEach((el, i) => {
-        if (!el) return;
-        if (!el.hasAttribute("data-aos")) {
-          el.setAttribute("data-aos", opts.type || "fade-up");
-        }
-        if (opts.delayStep != null) {
-          el.setAttribute(
-            "data-aos-delay",
-            (opts.baseDelay || 0) + i * opts.delayStep
-          );
-        } else if (opts.delay != null) {
-          el.setAttribute("data-aos-delay", opts.delay);
-        }
-        if (opts.duration)
-          el.setAttribute("data-aos-duration", opts.duration);
-        if (opts.anchorPlacement)
-          el.setAttribute("data-aos-anchor-placement", opts.anchorPlacement);
-        if (opts.easing) el.setAttribute("data-aos-easing", opts.easing);
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const setAOS = (selector, opts = {}) => {
+          document.querySelectorAll(selector).forEach((el, i) => {
+            if (!el) return;
+            if (!el.hasAttribute("data-aos")) {
+              el.setAttribute("data-aos", opts.type || "fade-up");
+            }
+            if (opts.delayStep != null) {
+              el.setAttribute(
+                "data-aos-delay",
+                (opts.baseDelay || 0) + i * opts.delayStep
+              );
+            } else if (opts.delay != null) {
+              el.setAttribute("data-aos-delay", opts.delay);
+            }
+            if (opts.duration)
+              el.setAttribute("data-aos-duration", opts.duration);
+            if (opts.anchorPlacement)
+              el.setAttribute(
+                "data-aos-anchor-placement",
+                opts.anchorPlacement
+              );
+            if (opts.easing) el.setAttribute("data-aos-easing", opts.easing);
+          });
+        };
+
+        /* Navbar */
+        setAOS("#navbar", { type: "fade-down", duration: 650 });
+
+        /* Hero */
+        setAOS("#home h1", { type: "zoom-in", duration: 700 });
+        setAOS("#home p", { type: "fade-up", delay: 100, duration: 700 });
+        setAOS("#home a, #home button", {
+          type: "zoom-in-up",
+          delay: 150,
+          duration: 700,
+        });
+
+        /* Section titles + intro text */
+        setAOS("section h2", { type: "fade-up", duration: 650 });
+        setAOS("section p", {
+          type: "fade-up",
+          baseDelay: 30,
+          delayStep: 30,
+          duration: 650,
+        });
+
+        /* Program cards */
+        setAOS("#programs .rounded-2xl", {
+          type: "fade-up",
+          delayStep: 80,
+          duration: 650,
+        });
+        setAOS("#programs img", {
+          type: "zoom-in",
+          delayStep: 60,
+          duration: 600,
+        });
+
+        /* Contact form fields + social icons */
+        setAOS("#contact form > *", {
+          type: "fade-up",
+          delayStep: 50,
+          duration: 600,
+        });
+        setAOS("#contact .social-icon", {
+          type: "zoom-in",
+          delayStep: 50,
+          duration: 600,
+        });
+
+        /* Donate section */
+        setAOS("#donate img", { type: "zoom-in", duration: 650 });
+        setAOS("#donate .flex.items-center, #donate .space-y-4 > *", {
+          type: "fade-up",
+          delayStep: 50,
+          duration: 650,
+        });
+
+        /* Founder section */
+        setAOS("#founder .founder-img-wrapper", {
+          type: "zoom-in",
+          duration: 650,
+        });
+        setAOS("#founder .md\\:col-span-2 p", {
+          type: "fade-up",
+          delayStep: 80,
+          duration: 650,
+        });
+        setAOS("#founder .flex.flex-wrap > *", {
+          type: "zoom-in",
+          delayStep: 50,
+          duration: 600,
+        });
+
+        /* Footer */
+        setAOS("footer", { type: "fade-up", duration: 600 });
+
+        // Init AOS
+        AOS.init({
+          once: true,
+          offset: 70,
+          duration: 550, // slightly slower default
+        });
       });
-    };
+      const thumbs = document.querySelectorAll('.gallery-thumb');
+const lightbox = document.getElementById('lightbox');
+const closeBtn = document.getElementById('closeLightbox');
+const nextBtn = document.getElementById('nextImage');
+const prevBtn = document.getElementById('prevImage');
+const slidePrev = document.getElementById('slidePrev');
+const slideCurrent = document.getElementById('slideCurrent');
+const slider = document.getElementById('slider');
 
-    /* Navbar */
-    setAOS("#navbar", { type: "fade-down", duration: 650 });
+let currentIndex = 0;
+let images = [];
 
-    /* Hero */
-    setAOS("#home h1", { type: "zoom-in", duration: 700 });
-    setAOS("#home p", { type: "fade-up", delay: 100, duration: 700 });
-    setAOS("#home a, #home button", {
-      type: "zoom-in-up",
-      delay: 150,
-      duration: 700,
-    });
-
-    /* Section titles + intro text */
-    setAOS("section h2", { type: "fade-up", duration: 650 });
-    setAOS("section p", {
-      type: "fade-up",
-      baseDelay: 30,
-      delayStep: 30,
-      duration: 650,
-    });
-
-    /* Program cards */
-    setAOS("#programs .rounded-2xl", {
-      type: "fade-up",
-      delayStep: 80,
-      duration: 650,
-    });
-    setAOS("#programs img", {
-      type: "zoom-in",
-      delayStep: 60,
-      duration: 600,
-    });
-
-    /* Contact form fields + social icons */
-    setAOS("#contact form > *", {
-      type: "fade-up",
-      delayStep: 50,
-      duration: 600,
-    });
-    setAOS("#contact .social-icon", {
-      type: "zoom-in",
-      delayStep: 50,
-      duration: 600,
-    });
-
-    /* Donate section */
-    setAOS("#donate img", { type: "zoom-in", duration: 650 });
-    setAOS("#donate .flex.items-center, #donate .space-y-4 > *", {
-      type: "fade-up",
-      delayStep: 50,
-      duration: 650,
-    });
-
-    /* Founder section */
-    setAOS("#founder .founder-img-wrapper", {
-      type: "zoom-in",
-      duration: 650,
-    });
-    setAOS("#founder .md\\:col-span-2 p", {
-      type: "fade-up",
-      delayStep: 80,
-      duration: 650,
-    });
-    setAOS("#founder .flex.flex-wrap > *", {
-      type: "zoom-in",
-      delayStep: 50,
-      duration: 600,
-    });
-
-    /* Footer */
-    setAOS("footer", { type: "fade-up", duration: 600 });
-
-    // Init AOS
-    AOS.init({
-      once: true,
-      offset: 70,
-      duration: 550, // slightly slower default
-    });
+thumbs.forEach((thumb, i) => {
+  images.push(thumb.src);
+  thumb.addEventListener('click', () => {
+    currentIndex = i;
+    slideCurrent.src = images[currentIndex];
+    lightbox.classList.remove('hidden');
   });
-</script>
+});
+
+function slideToNext() {
+  let nextIndex = (currentIndex + 1) % images.length;
+  slidePrev.src = slideCurrent.src;
+  slideCurrent.src = images[nextIndex];
+  slider.style.transform = "translateX(-50%)";
+
+  setTimeout(() => {
+    slider.style.transition = "none";
+    slider.style.transform = "translateX(0)";
+    slidePrev.src = "";
+    slider.offsetHeight; // force reflow
+    slider.style.transition = "transform 0.5s ease-in-out";
+    currentIndex = nextIndex;
+  }, 500);
+}
+
+function slideToPrev() {
+  let prevIndex = (currentIndex - 1 + images.length) % images.length;
+  slidePrev.src = images[prevIndex];
+  slider.style.transform = "translateX(-50%)";
+  slideCurrent.src = images[currentIndex];
+  slider.style.transform = "translateX(50%)";
+
+  setTimeout(() => {
+    slideCurrent.src = images[prevIndex];
+    slider.style.transition = "none";
+    slider.style.transform = "translateX(0)";
+    slider.offsetHeight;
+    slider.style.transition = "transform 0.5s ease-in-out";
+    currentIndex = prevIndex;
+  }, 500);
+}
+
+nextBtn.addEventListener('click', slideToNext);
+prevBtn.addEventListener('click', slideToPrev);
+
+closeBtn.addEventListener('click', () => lightbox.classList.add('hidden'));
+
+// Swipe support
+let startX = 0;
+lightbox.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+lightbox.addEventListener('touchend', e => {
+  let endX = e.changedTouches[0].clientX;
+  if (startX - endX > 50) slideToNext();
+  if (endX - startX > 50) slideToPrev();
+});
+// Select elements
+const galleryImages = document.querySelectorAll('.gallery-grid img');
+const galleryLightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+
+// Open lightbox when clicking an image
+galleryImages.forEach(img => {
+  img.addEventListener('click', () => {
+    galleryLightbox.classList.remove('hidden');
+    lightboxImg.src = img.src;
+  });
+});
+
+// Close lightbox when clicking outside image
+galleryLightbox.addEventListener('click', (e) => {
+  if (e.target === galleryLightbox) {
+    galleryLightbox.classList.add('hidden');
+  }
+});
+
+    </script>
   </body>
 </html>
